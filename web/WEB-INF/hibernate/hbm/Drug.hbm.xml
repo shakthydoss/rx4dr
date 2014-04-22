@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 10, 2014 5:04:38 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Drug" table="drug" catalog="rx4dr">
+        <id name="IDrug" type="java.lang.Integer">
+            <column name="I_DRUG" />
+            <generator class="identity" />
+        </id>
+        <property name="NDrug" type="string">
+            <column name="N_DRUG" length="95" not-null="true" />
+        </property>
+        <property name="XDesc" type="string">
+            <column name="X_DESC" length="225" />
+        </property>
+        <property name="IUserCreatd" type="java.lang.Integer">
+            <column name="I_USER_CREATD" />
+        </property>
+        <property name="TStmpCreatd" type="timestamp">
+            <column name="T_STMP_CREATD" length="19" />
+        </property>
+        <property name="IUserUpd" type="java.lang.Integer">
+            <column name="I_USER_UPD" />
+        </property>
+        <property name="TStmpUpd" type="timestamp">
+            <column name="T_STMP_UPD" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

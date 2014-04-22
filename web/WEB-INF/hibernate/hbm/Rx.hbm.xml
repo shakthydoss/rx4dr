@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 10, 2014 5:04:38 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Rx" table="rx" catalog="rx4dr">
+        <id name="IRx" type="java.lang.Integer">
+            <column name="I_RX" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userByIPatient" class="User" fetch="select">
+            <column name="I_PATIENT" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByIDoctor" class="User" fetch="select">
+            <column name="I_DOCTOR" not-null="true" />
+        </many-to-one>
+        <property name="IUserCreatd" type="java.lang.Integer">
+            <column name="I_USER_CREATD" />
+        </property>
+        <property name="TStmpCreatd" type="timestamp">
+            <column name="T_STMP_CREATD" length="19" />
+        </property>
+        <property name="IUserUpd" type="java.lang.Integer">
+            <column name="I_USER_UPD" />
+        </property>
+        <property name="TStmpUpd" type="timestamp">
+            <column name="T_STMP_UPD" length="19" />
+        </property>
+        <set name="rxRecs" table="rx_rec" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="I_RX" not-null="true" />
+            </key>
+            <one-to-many class="RxRec" />
+        </set>
+    </class>
+</hibernate-mapping>
