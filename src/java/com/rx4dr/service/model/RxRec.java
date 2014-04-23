@@ -1,4 +1,4 @@
-package com.rx4dr.service;
+package com.rx4dr.service.model;
 
 
 public class RxRec implements java.io.Serializable {

@@ -1,11 +1,23 @@
 package com.rx4dr.service.bo;
 
-import com.rx4dr.service.Rx;
+
+import com.rx4dr.service.dao.IPrescriptionDao;
+import com.rx4dr.service.model.Rx;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class IPrescriptionBoImpl implements IPrescriptionBo {
+    
+       private IPrescriptionDao prescriptionDao;
+       
+       public void setPrescriptionDao(IPrescriptionDao prescriptionDao){
+           this.prescriptionDao = prescriptionDao;
+       }
+       public IPrescriptionDao getPrescriptionDao(){
+           return prescriptionDao;
+       }
 
 	@Override
 	public int create(Rx rx) {
@@ -15,7 +27,7 @@ public class IPrescriptionBoImpl implements IPrescriptionBo {
 
 	@Override
 	public Rx get(int id) {
-		// TODO Auto-generated method stub
+		prescriptionDao.get(id);
 		return null;
 	}
 

@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 10, 2014 5:04:38 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="Rx" table="rx" catalog="rx4dr">
+    <class name="com.rx4dr.service.model.Rx" table="rx" catalog="rx4dr">
         <id name="IRx" type="java.lang.Integer">
             <column name="I_RX" />
             <generator class="identity" />

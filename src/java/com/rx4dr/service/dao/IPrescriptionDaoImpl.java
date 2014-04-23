@@ -1,13 +1,19 @@
 package com.rx4dr.service.dao;
 
-import com.rx4dr.service.Rx;
+import com.rx4dr.service.model.Rx;
 import java.util.List;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 /**
  *
  * @author shakthydoss
  */
-public class IPrescriptionDaoImpl implements  IPrescriptionDao{
+public class IPrescriptionDaoImpl extends HibernateDaoSupport implements  IPrescriptionDao{
+    
+    @Autowired
+    private SessionFactory sessionFactory;
 
     @Override
     public int create(Rx rx) {
@@ -16,7 +22,9 @@ public class IPrescriptionDaoImpl implements  IPrescriptionDao{
 
     @Override
     public Rx get(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("i am here...");
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override

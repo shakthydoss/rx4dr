@@ -1,4 +1,4 @@
-package com.rx4dr.service;
+package com.rx4dr.service.model;
 
 
 import java.util.Date;

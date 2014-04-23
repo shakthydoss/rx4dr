@@ -1,6 +1,6 @@
 package com.rx4dr.service.dao;
 
-import com.rx4dr.service.Rx;
+import com.rx4dr.service.model.Rx;
 import java.util.List;
 
 /**

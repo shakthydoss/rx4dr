@@ -1,7 +1,7 @@
 package com.rx4dr.service.bo;
 
 
-import com.rx4dr.service.Rx;
+import com.rx4dr.service.model.Rx;
 import java.util.List;
 
 

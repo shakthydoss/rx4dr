@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 10, 2014 5:04:38 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="RxRec" table="rx_rec" catalog="rx4dr">
+    <class name="com.rx4dr.service.model.RxRec" table="rx_rec" catalog="rx4dr">
         <id name="IRxRec" type="int">
             <column name="I_RX_REC" />
             <generator class="assigned" />
