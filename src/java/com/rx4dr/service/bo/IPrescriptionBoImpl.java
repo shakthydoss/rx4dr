@@ -1,10 +1,11 @@
-package service.rx4dr.com.dao;
+package com.rx4dr.service.bo;
 
+import com.rx4dr.service.Rx;
 import java.util.List;
 
-import service.rx4dr.com.model.Rx;
 
-public class IPrescriptionDaoImpl implements IPrescriptionDao {
+
+public class IPrescriptionBoImpl implements IPrescriptionBo {
 
 	@Override
 	public int create(Rx rx) {
@@ -41,5 +42,7 @@ public class IPrescriptionDaoImpl implements IPrescriptionDao {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+  
 
 }

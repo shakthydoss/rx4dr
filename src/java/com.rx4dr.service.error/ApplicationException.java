@@ -1,4 +1,4 @@
-package service.rx4dr.com.error;
+package com.rx4dr.service;
 
 public class ApplicationException {
 

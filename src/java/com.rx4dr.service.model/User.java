@@ -1,4 +1,4 @@
-package service.rx4dr.com.model;
+package com.rx4dr.service;
 
 import java.util.Date;
 import java.util.HashSet;

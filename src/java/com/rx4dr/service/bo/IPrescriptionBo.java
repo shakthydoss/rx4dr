@@ -1,10 +1,12 @@
-package service.rx4dr.com.dao;
+package com.rx4dr.service.bo;
 
+
+import com.rx4dr.service.Rx;
 import java.util.List;
 
-import service.rx4dr.com.model.Rx;
 
-public interface IPrescriptionDao {
+
+public interface IPrescriptionBo {
 	
 	public int create(Rx rx);
 	public Rx get(int id);
