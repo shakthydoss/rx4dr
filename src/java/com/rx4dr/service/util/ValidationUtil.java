@@ -1,4 +1,4 @@
-package service.rx4dr.com.util;
+package com.rx4dr.service.util;
 
 public class ValidationUtil {
 
