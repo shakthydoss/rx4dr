@@ -3,21 +3,22 @@
  * Proprietary and confidential
  * Written by shakthydoss <shakthydoss@gmail.com>, 2014
  */
-package com.rx4dr.service.util;
+package com.rx4dr.service.controller;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author sakthidasans
  */
-@Component
-public class AppProperty {
+public class AppConstants {
     
     @Value("${app.lbl.description}")
     private String lblError;
 
+    @Value("${app.lbl.description}")
+    public static String TEST; 
+    
     public String getLblError() {
         return lblError;
     }

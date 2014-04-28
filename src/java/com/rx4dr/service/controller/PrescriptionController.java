@@ -1,7 +1,6 @@
 package com.rx4dr.service.controller;
 
 import com.rx4dr.service.bo.IPrescriptionBo;
-import com.rx4dr.service.util.AppProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -26,8 +25,9 @@ private String testvariable;
   String result="Hello "+name;  
   System.out.println("-----"+name);
   System.out.println("testvariable-----"+testvariable);
-  AppProperty prop = new AppProperty();
-  System.out.println("--prop--"+prop.getLblError());
+
+  AppConstants appConstants = new AppConstants();
+  System.out.println(appConstants.getLblError());
    
   prescriptionBo.get(0);
   return result;
