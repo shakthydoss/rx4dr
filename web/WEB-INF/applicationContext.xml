@@ -44,12 +44,8 @@
                 <prop key="hibernate.show_sql">true</prop>                                   
             </props>
         </property>
-        <property name="mappingResources">
-            <list>
-                <!--
-                <value>hbm/User.hbm.xml</value>	   
-                -->      
-            </list>
+        <property name="mappingLocations">
+            <value>classpath*:WEB-INF/hibernate/hbm/*.hbm.xml</value>
         </property>
     </bean>
 

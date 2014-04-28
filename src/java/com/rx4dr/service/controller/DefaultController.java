@@ -1,5 +1,26 @@
 package com.rx4dr.service.controller;
 
-public class DefaultController {
+import com.rx4dr.service.error.UnknownResourceException;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+public class DefaultController {
+final Log logger = LogFactory.getLog(getClass());
+    /**
+	 * Method to handle unmapped requests.
+	 * 
+	 * @param request
+	 */
+	@RequestMapping("/**")
+	public void unmappedRequest(HttpServletRequest request) {
+		this.logger.info("Entering unmappedRequest");
+		String uri = request.getRequestURI();
+		throw new UnknownResourceException(
+				"UnknownResourceException",
+				"There is no resource for path " + uri);
+	}
 }
