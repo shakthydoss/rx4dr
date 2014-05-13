@@ -20,7 +20,7 @@
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     
-     <!--business object -->
+    <!--business object -->
     <bean id="userBo" class="com.rx4dr.service.bo.UserBoImpl" >
         <property name="userDao" ref="userDao" />
     </bean>
@@ -29,6 +29,7 @@
     <bean id="userDao" class="com.rx4dr.service.dao.UserDaoImpl" >
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    
 
     <!-- Data source  -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

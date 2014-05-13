@@ -10,7 +10,7 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
  *
  * @author shakthydoss
  */
-public class IPrescriptionDaoImpl extends HibernateDaoSupport implements  IPrescriptionDao{
+public class PrescriptionDaoImpl extends HibernateDaoSupport implements  IPrescriptionDao{
     
     @Autowired
     private SessionFactory sessionFactory;

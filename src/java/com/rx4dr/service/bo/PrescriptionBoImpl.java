@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class IPrescriptionBoImpl implements IPrescriptionBo {
+public class PrescriptionBoImpl implements IPrescriptionBo {
     
        private IPrescriptionDao prescriptionDao;
        

@@ -9,6 +9,7 @@ public class ApplicationException  extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 1L;
 
+        private String code;
 	private String error;
 	private String description;
 	private List<FieldError> fieldErrors;
@@ -23,9 +24,8 @@ public class ApplicationException  extends RuntimeException {
 		this.description = description;
 	}
 
-	public ApplicationException(String error,
-			List<FieldError> fieldErrors, Exception e) {
-		super(e);
+	public ApplicationException(String code , String error, List<FieldError> fieldErrors) {
+	        this.code = code;
 		this.error = error;
 		this.setFieldErrors(fieldErrors);
 	}
