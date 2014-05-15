@@ -18,9 +18,7 @@ final Log logger = LogFactory.getLog(getClass());
 	@RequestMapping("/**")
 	public void unmappedRequest(HttpServletRequest request) {
 		this.logger.info("Entering unmappedRequest");
-		String uri = request.getRequestURI();
-		throw new UnknownResourceException(
-				"UnknownResourceException",
-				"There is no resource for path " + uri);
+		String uri = request.getRequestURI();                
+		throw new UnknownResourceException("There is no resource for path " + uri + " using "+request.getMethod()+" request");
 	}
 }

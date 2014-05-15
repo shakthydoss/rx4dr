@@ -6,13 +6,15 @@
 package com.rx4dr.service.controller;
 
 import com.rx4dr.service.bo.IUserBo;
-import com.rx4dr.service.error.ApplicationException;
 import com.rx4dr.service.error.FieldError;
+import com.rx4dr.service.error.FieldValidationException;
 import com.rx4dr.service.model.ResponseEntity;
 import com.rx4dr.service.model.User;
 import com.rx4dr.service.util.ValidationUtil;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,15 +30,17 @@ public class UserController {
     @Autowired
     private IUserBo userBo;
 
-    public ResponseEntity<User> add(User user) {
-        ValidationUtil validationUtil = new ValidationUtil();
-        List<FieldError> errors = validationUtil.userAdd(user);
-        if (errors != null) {
-            throw new ApplicationException("422", "field validation exception", errors);
-        }
-
-        //user = userBo.add(user);
-        return new ResponseEntity<User>("200", user);
+    @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> add(@RequestBody User user)  {
+            System.out.println("I am in add");       
+            ValidationUtil validationUtil = new ValidationUtil();
+            List<FieldError> errors = validationUtil.userAdd(user);
+            if (errors != null) {
+                System.out.println("throwing error");
+                throw new FieldValidationException(errors);
+            }
+            user = userBo.add(user);
+            return new ResponseEntity<User>("200", user);        
     }
 
     @RequestMapping(value = "/return", method = RequestMethod.GET)
