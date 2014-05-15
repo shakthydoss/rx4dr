@@ -36,17 +36,20 @@ public class UserBoImpl implements UserBo{
 
     @Override
     public User getById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      logger.info("Entering getById");
+      return userDao.getById(id);
     }
 
     @Override
     public User getByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        logger.info("Entering getByEmail");
+        return userDao.getByEmail(email);
     }
 
     @Override
     public User update(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        logger.info("Entering update");
+        return userDao.update(user);
     }
     
 }

@@ -25,7 +25,7 @@
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
-
+    <bean id="validationUtil" class="com.rx4dr.service.util.ValidationUtil" />
 
     <!-- Data source  -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">       

@@ -36,6 +36,7 @@ private String description;
     @ExceptionHandler({UnknownResourceException.class})
     public ResponseEntity<Map<String, String>> handleUnknownResourceException(
             UnknownResourceException e) {
+        logger.debug("Enyeting handleUnknownResourceException");
         Map<String, String> map = new HashMap<String, String>();      
         map.put(status, HttpStatus.NOT_FOUND.toString());
         map.put(error, e.getClass().getSimpleName());
@@ -47,6 +48,7 @@ private String description;
     @ExceptionHandler(FieldValidationException.class)
 	public ResponseEntity<Map<String, Object>> FieldValidationExceptionHandler(
 			FieldValidationException e) {           
+            logger.debug("Enyeting FieldValidationExceptionHandler");
             Map<String, Object> map = new HashMap<String, Object>();
             map.put(error,"422");
             map.put(status, e.getClass().getSimpleName());
@@ -57,7 +59,7 @@ private String description;
     @ExceptionHandler(ApplicationException.class)
 	public ResponseEntity<Map<String, Object>> exceptionHandler(
 			ApplicationException e) {
-
+            logger.debug("Enyeting exceptionHandler");
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		if (e.getCode().equals("422")) {
