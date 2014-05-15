@@ -5,7 +5,7 @@
  */
 package com.rx4dr.service.bo;
 
-import com.rx4dr.service.dao.IUserDao;
+import com.rx4dr.service.dao.UserDao;
 import com.rx4dr.service.model.User;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,17 +14,17 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author shakthydoss
  */
-public class UserBoImpl implements IUserBo{
+public class UserBoImpl implements UserBo{
 
     private transient final Log logger = LogFactory.getLog( this.getClass() );
 
-    private IUserDao  userDao;
+    private UserDao  userDao;
 
-    public IUserDao getUserDao() {
+    public UserDao getUserDao() {
         return userDao;
     }
 
-    public void setUserDao(IUserDao userDao) {
+    public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
     

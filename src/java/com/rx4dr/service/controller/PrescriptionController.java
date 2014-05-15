@@ -1,7 +1,9 @@
 package com.rx4dr.service.controller;
 
-import com.rx4dr.service.bo.IPrescriptionBo;
+import com.rx4dr.service.bo.PrescriptionBo;
 import com.rx4dr.service.model.ResponseEntity;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,13 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class PrescriptionController {
 
 @Autowired    
-private IPrescriptionBo prescriptionBo;
+private PrescriptionBo prescriptionBo;
 
 @Value("${app.lbl.description}")
 private String testvariable;
     
  @RequestMapping(value = "/{name}", method = RequestMethod.GET)
  public ResponseEntity<String> getGreeting(@PathVariable String name) {
+  final Log logger = LogFactory.getLog(getClass());
+  
   String result="Hello "+name;  
   System.out.println("-----"+name);
   System.out.println("testvariable-----"+testvariable);

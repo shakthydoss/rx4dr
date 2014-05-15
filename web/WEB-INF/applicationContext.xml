@@ -14,36 +14,28 @@
     <bean id="prescriptionBo" class="com.rx4dr.service.bo.PrescriptionBoImpl" >
         <property name="prescriptionDao" ref="prescriptionDao" />
     </bean>
- 
-    <!-- Data Access Object -->
     <bean id="prescriptionDao" class="com.rx4dr.service.dao.PrescriptionDaoImpl" >
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
-    
-     <!--business object -->
+         
     <bean id="userBo" class="com.rx4dr.service.bo.UserBoImpl" >
         <property name="userDao" ref="userDao" />
     </bean>
- 
-    <!-- Data Access Object -->
     <bean id="userDao" class="com.rx4dr.service.dao.UserDaoImpl" >
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
 
+
+
     <!-- Data source  -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <!--
-        <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-        <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/rx4dr"/>
-        <property name="hibernate.connection.username" value="root"/>
-        <property name="hibernate.connection.password" value="jaidasa"/>
-        -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">       
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/rx4dr"/>
         <property name="username" value="root"/>
         <property name="password" value="jaidasa"/>
     </bean>
   
+   <!-- hibernate properties -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="hibernateProperties">
@@ -58,6 +50,7 @@
             <value>classpath*:WEB-INF/hibernate/hbm/*.hbm.xml</value>
         </property>
     </bean>
+
 
     <bean id="transactionManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />

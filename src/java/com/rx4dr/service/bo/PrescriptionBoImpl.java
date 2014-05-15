@@ -1,21 +1,24 @@
 package com.rx4dr.service.bo;
 
 
-import com.rx4dr.service.dao.IPrescriptionDao;
+import com.rx4dr.service.dao.PrescriptionDao;
 import com.rx4dr.service.model.Rx;
 import java.util.List;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class PrescriptionBoImpl implements IPrescriptionBo {
+public class PrescriptionBoImpl implements PrescriptionBo {
+       final Log logger = LogFactory.getLog(getClass());
     
-       private IPrescriptionDao prescriptionDao;
+       private PrescriptionDao prescriptionDao;
        
-       public void setPrescriptionDao(IPrescriptionDao prescriptionDao){
+       public void setPrescriptionDao(PrescriptionDao prescriptionDao){
            this.prescriptionDao = prescriptionDao;
        }
-       public IPrescriptionDao getPrescriptionDao(){
+       public PrescriptionDao getPrescriptionDao(){
            return prescriptionDao;
        }
 

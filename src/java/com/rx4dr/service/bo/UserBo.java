@@ -11,7 +11,7 @@ import com.rx4dr.service.model.User;
  *
  * @author shakthydoss
  */
-public interface IUserBo {
+public interface UserBo {
     public User add(User user);
     public User getById(int id);
     public User getByEmail(String email);

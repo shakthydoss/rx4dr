@@ -31,5 +31,5 @@
     <context:property-placeholder ignore-resource-not-found="true" location="WEB-INF/property/application.properties" />
     <context:component-scan base-package="com.rx4dr.service.controller,com.rx4dr.service.util" />        
     <mvc:annotation-driven/>
-        
+
 </beans>

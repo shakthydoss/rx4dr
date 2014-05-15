@@ -2,6 +2,8 @@ package com.rx4dr.service.dao;
 
 import com.rx4dr.service.model.Rx;
 import java.util.List;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
@@ -10,7 +12,8 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
  *
  * @author shakthydoss
  */
-public class PrescriptionDaoImpl extends HibernateDaoSupport implements  IPrescriptionDao{
+public class PrescriptionDaoImpl extends HibernateDaoSupport implements  PrescriptionDao{
+    final Log logger = LogFactory.getLog(getClass());
     
     @Autowired
     private SessionFactory sessionFactory;

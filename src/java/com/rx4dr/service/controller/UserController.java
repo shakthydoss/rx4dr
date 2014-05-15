@@ -5,13 +5,15 @@
  */
 package com.rx4dr.service.controller;
 
-import com.rx4dr.service.bo.IUserBo;
+import com.rx4dr.service.bo.UserBo;
 import com.rx4dr.service.error.FieldError;
 import com.rx4dr.service.error.FieldValidationException;
 import com.rx4dr.service.model.ResponseEntity;
 import com.rx4dr.service.model.User;
 import com.rx4dr.service.util.ValidationUtil;
 import java.util.List;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,17 +28,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    final Log logger = LogFactory.getLog(getClass());
 
     @Autowired
-    private IUserBo userBo;
+    private UserBo userBo;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> add(@RequestBody User user)  {
-            System.out.println("I am in add");       
+            logger.info("Entering add");       
             ValidationUtil validationUtil = new ValidationUtil();
             List<FieldError> errors = validationUtil.userAdd(user);
             if (errors != null) {
-                System.out.println("throwing error");
+                 logger.debug("FieldValidationException : "+errors);
                 throw new FieldValidationException(errors);
             }
             user = userBo.add(user);

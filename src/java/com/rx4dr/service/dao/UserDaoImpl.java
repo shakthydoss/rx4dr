@@ -17,7 +17,7 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
  *
  * @author shakthydoss
  */
-public class UserDaoImpl extends HibernateDaoSupport  implements IUserDao{
+public class UserDaoImpl extends HibernateDaoSupport  implements UserDao{
     
    private transient final Log logger = LogFactory.getLog( this.getClass() );
 
