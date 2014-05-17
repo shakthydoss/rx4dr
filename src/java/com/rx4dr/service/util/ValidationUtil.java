@@ -73,7 +73,7 @@ public class ValidationUtil {
         return errors;
     }
 
-    public List<FieldError> prescriptionControllerAdd(Rx rx) {
+    public List<FieldError> prescriptionAdd(Rx rx) {
         List<FieldError> errors = new ArrayList<FieldError>();
         if (rx == null) {
             errors.add(new FieldError("prescription object", "is invalid"));
@@ -113,7 +113,7 @@ public class ValidationUtil {
         return errors;
     }
 
-    public List<FieldError> prescriptionControllerGet(int id) {
+    public List<FieldError> prescriptionGet(int id) {
         List<FieldError> errors = new ArrayList<FieldError>();
         if (isLesserThanZero(id)) {
             errors.add(new FieldError("id", "is invalid"));
@@ -121,7 +121,7 @@ public class ValidationUtil {
         return errors;
     }
 
-    public List<FieldError> prescriptionControllerDelete(int id) {
+    public List<FieldError> prescriptionDelete(int id) {
         List<FieldError> errors = new ArrayList<FieldError>();
         if (isLesserThanZero(id)) {
             errors.add(new FieldError("id", "is invalid"));
@@ -129,7 +129,7 @@ public class ValidationUtil {
         return errors;
     }
 
-    public List<FieldError> prescriptionControllerSendEmail(int id) {
+    public List<FieldError> prescriptionSendEmail(int id) {
         List<FieldError> errors = new ArrayList<FieldError>();
         if (isLesserThanZero(id)) {
             errors.add(new FieldError("id", "is invalid"));
@@ -137,7 +137,7 @@ public class ValidationUtil {
         return errors;
     }
 
-    public List<FieldError> prescriptionControllerSearch(String name) {
+    public List<FieldError> prescriptionSearch(String name) {
         List<FieldError> errors = new ArrayList<FieldError>();
         if (isNullOrEmpty(name)) {
             errors.add(new FieldError("name", "is invalid"));
