@@ -20,7 +20,7 @@ public class Rx implements java.io.Serializable {
 	private Integer IUserUpd;
 	private Date TStmpUpd;
 	
-	private Set rxRecs = new HashSet(0);
+	private Set<RxRec> rxRecs = new HashSet(0);
 
 	public Rx() {
 	}
@@ -97,11 +97,11 @@ public class Rx implements java.io.Serializable {
 		this.TStmpUpd = TStmpUpd;
 	}
 
-	public Set getRxRecs() {
+	public Set<RxRec> getRxRecs() {
 		return this.rxRecs;
 	}
 
-	public void setRxRecs(Set rxRecs) {
+	public void setRxRecs(Set<RxRec> rxRecs) {
 		this.rxRecs = rxRecs;
 	}
 

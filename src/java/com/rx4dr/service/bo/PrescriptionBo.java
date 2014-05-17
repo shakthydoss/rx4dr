@@ -8,11 +8,10 @@ import java.util.List;
 
 public interface PrescriptionBo {
 	
-	public int create(Rx rx);
-	public Rx get(int id);
-	public Rx search(int id,boolean sortBydate, boolean sortByName);
+	public Rx add(Rx rx);
+	public Rx get(int id);	
 	public List<Rx>search(String name,boolean sortBydate, boolean sortByName);
-	public int delete(int id);
-	public boolean sendEmail(Rx rx);
+	public boolean delete(int id);
+	public boolean sendEmail(int id);
 
 }

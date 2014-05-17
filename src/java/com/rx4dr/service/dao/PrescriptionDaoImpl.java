@@ -19,35 +19,29 @@ public class PrescriptionDaoImpl extends HibernateDaoSupport implements  Prescri
     private SessionFactory sessionFactory;
 
     @Override
-    public int create(Rx rx) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Rx add(Rx rx) {
+        logger.info("Entering add");
+        return null;        
     }
 
     @Override
     public Rx get(int id) {
-        System.out.println("i am here...");
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return null;
-    }
-
-    @Override
-    public Rx search(int id, boolean sortBydate, boolean sortByName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        logger.info("Entering get");
+        return null;        
+    }   
 
     @Override
     public List<Rx> search(String name, boolean sortBydate, boolean sortByName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        logger.info("Entering search");
+        return null;        
     }
 
     @Override
-    public int delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean delete(int id) {
+       logger.info("Entering delete");
+        return false;        
     }
 
-    @Override
-    public boolean sendEmail(Rx rx) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }

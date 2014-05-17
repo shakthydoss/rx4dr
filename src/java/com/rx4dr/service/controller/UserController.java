@@ -40,7 +40,7 @@ public class UserController {
     private ValidationUtil validationUtil;
 
     @Value("${app.lbl.success.code}")
-    private String successCode;
+    private String status;
     @Value("${app.error.FieldValidationException.name}")
     private String FieldValidationException;
 
@@ -53,7 +53,7 @@ public class UserController {
             throw new FieldValidationException(errors);
         }
         user = userBo.add(user);
-        return new ResponseEntity<User>(successCode, user);
+        return new ResponseEntity<User>(status, user);
     }
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
@@ -65,7 +65,7 @@ public class UserController {
             throw new FieldValidationException(errors);
         }
         User user = userBo.getById(id);
-        return new ResponseEntity<User>(successCode, user);
+        return new ResponseEntity<User>(status, user);
     }
 
     @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
@@ -77,7 +77,7 @@ public class UserController {
             throw new FieldValidationException(errors);
         }
         User user = userBo.getByEmail(email);
-        return new ResponseEntity<User>(successCode, user);
+        return new ResponseEntity<User>(status, user);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -89,7 +89,7 @@ public class UserController {
             throw new FieldValidationException(errors);
         }
         user = userBo.update(user);
-        return new ResponseEntity<User>(successCode, user);
+        return new ResponseEntity<User>(status, user);
     }
 
     @RequestMapping(value = "/return", method = RequestMethod.GET)
