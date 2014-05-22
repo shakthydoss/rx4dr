@@ -1,9 +1,3 @@
-<!-- 
-  Copyright (C) Rx4Dr, Inc - All Rights Reserved
-  Unauthorized copying of this file, via any medium is strictly prohibited
-  Proprietary and confidential
-  Written by shakthydoss <shakthydoss@gmail.com>, 2014
--->
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
@@ -11,7 +5,7 @@
     <class name="com.rx4dr.service.model.Drug" table="drug" catalog="rx4dr">
         <id name="IDrug" type="int">
             <column name="I_DRUG" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="NDrug" type="string">
             <column name="N_DRUG" length="95" not-null="true" />

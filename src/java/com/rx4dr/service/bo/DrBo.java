@@ -16,5 +16,6 @@ public interface DrBo {
     public Dr getById(int id);
     public Dr getByEmail(String email);
     public Dr update(Dr dr);
+    public boolean delete(int id);
 
 }

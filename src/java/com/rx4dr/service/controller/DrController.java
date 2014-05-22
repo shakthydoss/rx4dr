@@ -6,18 +6,17 @@
 package com.rx4dr.service.controller;
 
 import com.rx4dr.service.bo.DrBo;
-import com.rx4dr.service.error.ApplicationException;
 import com.rx4dr.service.error.FieldError;
 import com.rx4dr.service.error.FieldValidationException;
 import com.rx4dr.service.model.Dr;
 import com.rx4dr.service.model.ResponseEntity;
 import com.rx4dr.service.util.ValidationUtil;
-import java.util.Date;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,6 +42,7 @@ public class DrController {
 
     @Value("${app.lbl.success.code}")
     private String status;
+    
     @Value("${app.error.FieldValidationException.name}")
     private String FieldValidationException;
 
@@ -56,8 +56,7 @@ public class DrController {
         }  
         dr = drBo.add(dr);
         logger.info("Exting add");
-        return new ResponseEntity<Dr>(status, dr);
-
+        return new ResponseEntity<Dr>(HttpStatus.CREATED.toString(), dr);
     }
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
@@ -69,7 +68,7 @@ public class DrController {
             throw new FieldValidationException(errors);
         }
         Dr dr = drBo.getById(id);
-        return new ResponseEntity<Dr>(status, dr);
+        return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);
     }
 
     @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
@@ -81,7 +80,7 @@ public class DrController {
             throw new FieldValidationException(errors);
         }
         Dr dr = drBo.getByEmail(email);
-        return new ResponseEntity<Dr>(status, dr);
+        return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -93,9 +92,16 @@ public class DrController {
             throw new FieldValidationException(errors);
         }
         dr = drBo.update(dr);
-        return new ResponseEntity<Dr>(status, dr);
+        return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);
     }
 
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Boolean> delete(@PathVariable int id) {
+       logger.info("Entering delete");
+       drBo.delete(id);
+       return new ResponseEntity<Boolean>(HttpStatus.NO_CONTENT.toString(), true);        
+    }
+    
     @RequestMapping(value = "/return", method = RequestMethod.GET)
     public Dr returnthis() {
         Dr u = new Dr();

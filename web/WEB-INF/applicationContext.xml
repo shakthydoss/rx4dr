@@ -9,35 +9,6 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-   
-      <!-- hibernate properties -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.connection.characterEncoding">UTF-8</prop>
-                <prop key="hibernate.connection.charSet">UTF-8</prop>          
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>     
-                <prop key="hbm2ddl.auto">update</prop>  
-                <prop key="hibernate.show_sql">true</prop>         
-                <prop key="hibernate.hbm2ddl.auto">create</prop>                            
-            </props>
-        </property>
-        
-      
-        <property name="mappingResources">
-            <list>
-                <value>com/rx4dr/service/hbm/Dr.hbm.xml</value>
-                <value>com/rx4dr/service/hbm/DrLbl.hbm.xml</value>                
-                <value>com/rx4dr/service/hbm/Drug.hbm.xml</value>                
-                <value>com/rx4dr/service/hbm/Rx.hbm.xml</value>                
-                <value>com/rx4dr/service/hbm/RxRec.hbm.xml</value>                                
-            </list>
-        </property>
-       
-    </bean>
-
-
     <bean id="transactionManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
@@ -67,6 +38,28 @@
         <property name="password" value="jaidasa"/>
     </bean>
   
- 
+
+     <!-- hibernate properties -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+                <prop key="hibernate.connection.charSet">UTF-8</prop>          
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>                    
+                <prop key="hibernate.show_sql">true</prop>    
+                <prop key="connection.autocommit">true</prop>                                              
+            </props>
+        </property>              
+        <property name="mappingResources">
+            <list>
+                <value>com/rx4dr/service/hbm/Dr.hbm.xml</value>
+                <value>com/rx4dr/service/hbm/DrLbl.hbm.xml</value>                
+                <value>com/rx4dr/service/hbm/Drug.hbm.xml</value>                
+                <value>com/rx4dr/service/hbm/Rx.hbm.xml</value>                
+                <value>com/rx4dr/service/hbm/RxRec.hbm.xml</value>                                
+            </list>
+        </property>       
+    </bean> 
     
 </beans>

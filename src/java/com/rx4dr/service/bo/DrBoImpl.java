@@ -59,5 +59,11 @@ public class DrBoImpl implements DrBo{
         logger.info("Entering update");
         return drDao.update(dr);
     }
+
+    @Override
+    public boolean delete(int id) {
+        logger.info("Entering delete");
+         return drDao.delete(id);
+    }
     
 }
