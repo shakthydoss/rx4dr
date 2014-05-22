@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 10, 2014 5:04:38 PM by Hibernate Tools 3.4.0.CR1 -->
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 May, 2014 4:00:52 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.rx4dr.service.model.Drug" table="drug" catalog="rx4dr">
-        <id name="IDrug" type="java.lang.Integer">
+        <id name="IDrug" type="int">
             <column name="I_DRUG" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <property name="NDrug" type="string">
             <column name="N_DRUG" length="95" not-null="true" />

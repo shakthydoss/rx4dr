@@ -5,17 +5,17 @@
  */
 package com.rx4dr.service.dao;
 
-import com.rx4dr.service.model.User;
+import com.rx4dr.service.model.Dr;
 
 /**
  *
  * @author shakthydoss
  */
-public interface UserDao {
+public interface DrDao {
     
-    public User add(User user);
-    public User getById(int id);
-    public User getByEmail(String email);
-    public User update(User user);
+    public Dr add(Dr dr);
+    public Dr getById(int id);
+    public Dr getByEmail(String email);
+    public Dr update(Dr dr);
     
 }

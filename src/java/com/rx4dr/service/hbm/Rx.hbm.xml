@@ -1,19 +1,25 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 10, 2014 5:04:38 PM by Hibernate Tools 3.4.0.CR1 -->
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 May, 2014 4:00:52 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.rx4dr.service.model.Rx" table="rx" catalog="rx4dr">
-        <id name="IRx" type="java.lang.Integer">
+        <id name="IRx" type="int">
             <column name="I_RX" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
-        <many-to-one name="userByIPatient" class="User" fetch="select">
-            <column name="I_PATIENT" not-null="true" />
+        <many-to-one name="dr" class="com.rx4dr.service.model.Dr" fetch="select">
+            <column name="I_DR" not-null="true" />
         </many-to-one>
-        <many-to-one name="userByIDoctor" class="User" fetch="select">
-            <column name="I_DOCTOR" not-null="true" />
-        </many-to-one>
+        <property name="patientName" type="string">
+            <column name="PATIENT_NAME" length="45" not-null="true" />
+        </property>
+        <property name="patientGender" type="char">
+            <column name="PATIENT_GENDER" length="1" not-null="true" />
+        </property>
+        <property name="patientAge" type="string">
+            <column name="PATIENT_AGE" length="45" />
+        </property>
         <property name="IUserCreatd" type="java.lang.Integer">
             <column name="I_USER_CREATD" />
         </property>
@@ -30,7 +36,7 @@
             <key>
                 <column name="I_RX" not-null="true" />
             </key>
-            <one-to-many class="RxRec" />
+            <one-to-many class="com.rx4dr.service.model.RxRec" />
         </set>
     </class>
 </hibernate-mapping>

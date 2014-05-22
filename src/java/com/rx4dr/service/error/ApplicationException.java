@@ -23,17 +23,10 @@ public class ApplicationException extends RuntimeException {
         super(e);
     }
 
-    public ApplicationException(String code, String error, String description, Exception e) {
-        super(e);
-        this.code = code;
+    public ApplicationException(String error, String description, Exception e) {
+        super(e);        
         this.error = error;
         this.description = description;
-    }
-
-    public ApplicationException(String code, String error, FieldValidationException e) {
-        this.code = code;
-        this.error = error;
-        this.setFieldErrors(e.getFieldErrors());
     }
 
     public void setDescription(String description) {

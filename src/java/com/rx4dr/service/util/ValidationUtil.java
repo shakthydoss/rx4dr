@@ -6,35 +6,33 @@
 package com.rx4dr.service.util;
 
 import com.rx4dr.service.error.FieldError;
+import com.rx4dr.service.model.Dr;
 import com.rx4dr.service.model.Rx;
 import com.rx4dr.service.model.RxRec;
-import com.rx4dr.service.model.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class ValidationUtil {
 
-    public List<FieldError> userAdd(User user) {
+    public List<FieldError> userAdd(Dr dr) {
         List<FieldError> errors = new ArrayList<FieldError>();
-        if (user == null) {
+        if (dr == null) {
             errors.add(new FieldError("user object", "is invalid"));
         }
-        if (isNullOrEmpty(user.getXEmail())) {
+        if (isNullOrEmpty(dr.getXEmail())) {
             errors.add(new FieldError("user email", "is invalid"));
         }
-        if (isNullOrEmpty(user.getNNick())) {
+        if (isNullOrEmpty(dr.getNNick())) {
             errors.add(new FieldError("user nickname", "is invalid"));
         }
-        if (isNullOrEmpty(user.getNFirst())) {
+        if (isNullOrEmpty(dr.getNFirst())) {
             errors.add(new FieldError("user firstName", "is invalid"));
         }
-        if (isNullOrEmpty(user.getNFirst())) {
+        if (isNullOrEmpty(dr.getNFirst())) {
             errors.add(new FieldError("user lastName", "is invalid"));
         }
-        if (isNullOrEmpty(user.getXUserTyp())) {
-            errors.add(new FieldError("user type", "is invalid"));
-        }
+       
         return errors;
     }
 
@@ -54,26 +52,24 @@ public class ValidationUtil {
         return errors;
     }
 
-    public List<FieldError> userUpdate(User user) {
+    public List<FieldError> userUpdate(Dr dr) {
         List<FieldError> errors = new ArrayList<FieldError>();
-        if (user == null) {
+        if (dr == null) {
             errors.add(new FieldError("user object", "is invalid"));
         }
-        if (isNullOrEmpty(user.getXEmail())) {
+        if (isNullOrEmpty(dr.getXEmail())) {
             errors.add(new FieldError("user email", "is invalid"));
         }
-        if (isNullOrEmpty(user.getNNick())) {
+        if (isNullOrEmpty(dr.getNNick())) {
             errors.add(new FieldError("user nickname", "is invalid"));
         }
-        if (isNullOrEmpty(user.getNFirst())) {
+        if (isNullOrEmpty(dr.getNFirst())) {
             errors.add(new FieldError("user firstName", "is invalid"));
         }
-        if (isNullOrEmpty(user.getNFirst())) {
+        if (isNullOrEmpty(dr.getNFirst())) {
             errors.add(new FieldError("user lastName", "is invalid"));
         }
-        if (isNullOrEmpty(user.getXUserTyp())) {
-            errors.add(new FieldError("user type", "is invalid"));
-        }
+      
         return errors;
     }
 
@@ -83,27 +79,19 @@ public class ValidationUtil {
             errors.add(new FieldError("prescription object", "is invalid"));
             return errors;
         }
+        
+        if (isNullOrEmpty(rx.getPatientName())) {
+            errors.add(new FieldError("patient name", "is invalid"));
+            return errors;
+        }       
 
-        if (rx.getUserByIDoctor() == null) {
-            errors.add(new FieldError("User object", "is invalid"));
+        if(isNullOrEmpty(rx.getPatientAge())){
+            errors.add(new FieldError("patient age", "is invalid"));            
             return errors;
         }
-
-        if (rx.getUserByIDoctor().getIUser() == null) {
-            errors.add(new FieldError("doctor object", "is invalid"));
-        }
-
-        if (rx.getUserByIPatient() == null) {
-            errors.add(new FieldError("patient object", "is invalid"));
-            return errors;
-        }
-
-        if (rx.getUserByIPatient().getIUser() == null) {
-            errors.add(new FieldError("patient object", "is invalid"));
-        }
-
+        
         if (rx.getRxRecs() == null || rx.getRxRecs().isEmpty()) {
-            errors.add(new FieldError("Drug name", "is invalid"));
+            errors.add(new FieldError("Drug name", "is invalid"));            
             return errors;
         }
 

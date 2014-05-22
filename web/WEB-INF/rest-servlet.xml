@@ -15,7 +15,7 @@
 
     
     <import resource="applicationContext.xml"/>
-        
+       
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -27,9 +27,12 @@
         </property>
     </bean>
     
+
     <context:annotation-config />
     <context:property-placeholder ignore-resource-not-found="true" location="WEB-INF/property/application.properties" />
-    <context:component-scan base-package="com.rx4dr.service.controller,com.rx4dr.service.util" />        
+    <context:component-scan base-package="com.rx4dr.service.controller,com.rx4dr.service.util" />               
     <mvc:annotation-driven/>
+ 
+	
 
 </beans>

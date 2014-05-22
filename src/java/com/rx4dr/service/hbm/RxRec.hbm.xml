@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 10, 2014 5:04:38 PM by Hibernate Tools 3.4.0.CR1 -->
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 May, 2014 4:00:52 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.rx4dr.service.model.RxRec" table="rx_rec" catalog="rx4dr">
         <id name="IRxRec" type="int">
             <column name="I_RX_REC" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="rx" class="Rx" fetch="select">
+        <many-to-one name="rx" class="com.rx4dr.service.model.Rx" fetch="select">
             <column name="I_RX" not-null="true" />
         </many-to-one>
         <property name="NDrug" type="string">
-            <column name="N_DRUG" length="95" not-null="true" />
+            <column name="N_DRUG" length="100" not-null="true" />
         </property>
         <property name="rte" type="string">
             <column name="RTE" length="25" />

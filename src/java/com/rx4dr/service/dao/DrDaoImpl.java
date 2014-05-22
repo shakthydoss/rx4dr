@@ -5,12 +5,13 @@
  */
 package com.rx4dr.service.dao;
 
-import com.rx4dr.service.model.User;
+import com.rx4dr.service.model.Dr;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
@@ -19,7 +20,7 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
  *
  * @author shakthydoss
  */
-public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
+public class DrDaoImpl extends HibernateDaoSupport implements DrDao {
 
     private transient final Log logger = LogFactory.getLog(this.getClass());
 
@@ -27,39 +28,41 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public User add(User user) {
+    public Dr add(Dr dr) {
         logger.info("Entering add");
         Session s = sessionFactory.openSession();
-        s.save(user);
-        return user;
+        Transaction tx = s.beginTransaction(); 
+        s.save(dr);            
+        tx.commit();
+        return dr;
     }
 
     @Override
-    public User getById(int id) {
+    public Dr getById(int id) {
         logger.info("Entering getById");
         Session session = sessionFactory.openSession();
-        Criteria criteria = session.createCriteria(User.class);
+        Criteria criteria = session.createCriteria(Dr.class);
         criteria.add(Restrictions.eq("IUser", id));
-        User user = (User) criteria.uniqueResult();
-        return user;
+        Dr dr = (Dr) criteria.uniqueResult();
+        return dr;
     }
 
     @Override
-    public User getByEmail(String email) {
+    public Dr getByEmail(String email) {
         logger.info("Entering getByEmail");
         Session session = sessionFactory.openSession();
-        Criteria criteria = session.createCriteria(User.class);
+        Criteria criteria = session.createCriteria(Dr.class);
         criteria.add(Restrictions.eq("XEmail", email));
-        User user = (User) criteria.uniqueResult();
-        return user;
+        Dr dr = (Dr) criteria.uniqueResult();
+        return dr;
     }
 
     @Override
-    public User update(User user) {
+    public Dr update(Dr dr) {
         logger.info("Entering update");
         Session session = sessionFactory.openSession();
-        session.update(user);
-        return user;
+        session.update(dr);
+        return dr;
     }
 
 }

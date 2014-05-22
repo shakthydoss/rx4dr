@@ -5,12 +5,14 @@
  */
 package com.rx4dr.service.controller;
 
-import com.rx4dr.service.bo.UserBo;
+import com.rx4dr.service.bo.DrBo;
+import com.rx4dr.service.error.ApplicationException;
 import com.rx4dr.service.error.FieldError;
 import com.rx4dr.service.error.FieldValidationException;
+import com.rx4dr.service.model.Dr;
 import com.rx4dr.service.model.ResponseEntity;
-import com.rx4dr.service.model.User;
 import com.rx4dr.service.util.ValidationUtil;
+import java.util.Date;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -28,13 +30,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @author shakthydoss
  */
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/dr")
+public class DrController {
 
     final Log logger = LogFactory.getLog(getClass());
 
     @Autowired
-    private UserBo userBo;
+    private DrBo drBo;
 
     @Autowired
     private ValidationUtil validationUtil;
@@ -45,56 +47,58 @@ public class UserController {
     private String FieldValidationException;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> add(@RequestBody User user) {
+    public ResponseEntity<Dr> add(@RequestBody Dr dr) {
         logger.info("Entering add");
-        List<FieldError> errors = validationUtil.userAdd(user);
+        List<FieldError> errors = validationUtil.userAdd(dr);
         if (errors.size() > 0) {
             logger.debug(FieldValidationException + " : " + errors);
             throw new FieldValidationException(errors);
-        }
-        user = userBo.add(user);
-        return new ResponseEntity<User>(status, user);
+        }  
+        dr = drBo.add(dr);
+        logger.info("Exting add");
+        return new ResponseEntity<Dr>(status, dr);
+
     }
 
     @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> getById(@PathVariable int id) {
+    public ResponseEntity<Dr> getById(@PathVariable int id) {
         logger.info("Entering getById");
         List<FieldError> errors = validationUtil.userGetUserById(id);
         if (errors.size() > 0) {
             logger.debug(FieldValidationException + " : " + errors);
             throw new FieldValidationException(errors);
         }
-        User user = userBo.getById(id);
-        return new ResponseEntity<User>(status, user);
+        Dr dr = drBo.getById(id);
+        return new ResponseEntity<Dr>(status, dr);
     }
 
     @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
-    public ResponseEntity<User> getByEmail(@PathVariable String email) {
+    public ResponseEntity<Dr> getByEmail(@PathVariable String email) {
         logger.info("Entering getByEmail");
         List<FieldError> errors = validationUtil.UserGetByEmail(email);
         if (errors.size() > 0) {
             logger.debug(FieldValidationException + " : " + errors);
             throw new FieldValidationException(errors);
         }
-        User user = userBo.getByEmail(email);
-        return new ResponseEntity<User>(status, user);
+        Dr dr = drBo.getByEmail(email);
+        return new ResponseEntity<Dr>(status, dr);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> update(@RequestBody User user) {
+    public ResponseEntity<Dr> update(@RequestBody Dr dr) {
         logger.info("Entering update");
-        List<FieldError> errors = validationUtil.userUpdate(user);
+        List<FieldError> errors = validationUtil.userUpdate(dr);
         if (errors.size() > 0) {
             logger.debug(FieldValidationException + " : " + errors);
             throw new FieldValidationException(errors);
         }
-        user = userBo.update(user);
-        return new ResponseEntity<User>(status, user);
+        dr = drBo.update(dr);
+        return new ResponseEntity<Dr>(status, dr);
     }
 
     @RequestMapping(value = "/return", method = RequestMethod.GET)
-    public User returnthis() {
-        User u = new User();
+    public Dr returnthis() {
+        Dr u = new Dr();
         return u;
     }
 }

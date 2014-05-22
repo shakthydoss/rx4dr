@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 May, 2014 4:00:52 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.rx4dr.service.model.Dr" table="dr" catalog="rx4dr">
+        <id name="IDr" type="int">
+            <column name="I_DR" />
+            <generator class="assigned" />
+        </id>
+        <property name="NFirst" type="string">
+            <column name="N_FIRST" length="45" not-null="true" />
+        </property>
+        <property name="NLast" type="string">
+            <column name="N_LAST" length="45" not-null="true" />
+        </property>
+        <property name="NMid" type="string">
+            <column name="N_MID" length="45" not-null="true" />
+        </property>
+        <property name="NNick" type="string">
+            <column name="N_NICK" length="45" not-null="true" />
+        </property>
+        <property name="XPh" type="string">
+            <column name="X_PH" length="25" />
+        </property>
+        <property name="XEmail" type="string">
+            <column name="X_EMAIL" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="IUserCreatd" type="java.lang.Integer">
+            <column name="I_USER_CREATD" />
+        </property>
+        <property name="TStmpCreatd" type="timestamp">
+            <column name="T_STMP_CREATD" length="19" />
+        </property>
+        <property name="IUserUpd" type="java.lang.Integer">
+            <column name="I_USER_UPD" />
+        </property>
+        <property name="TStmpUpd" type="timestamp">
+            <column name="T_STMP_UPD" length="19" />
+        </property>
+        <set name="rxes" table="rx" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="I_DR" not-null="true" />
+            </key>
+            <one-to-many class="com.rx4dr.service.model.Rx" />
+        </set>
+    </class>
+</hibernate-mapping>
