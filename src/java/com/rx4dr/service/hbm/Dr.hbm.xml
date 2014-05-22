@@ -1,7 +1,12 @@
+<!-- 
+  Copyright (C) Rx4Dr, Inc - All Rights Reserved
+  Unauthorized copying of this file, via any medium is strictly prohibited
+  Proprietary and confidential
+  Written by shakthydoss <shakthydoss@gmail.com>, 2014
+-->
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20 May, 2014 4:00:52 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.rx4dr.service.model.Dr" table="dr" catalog="rx4dr">
         <id name="IDr" type="int">
@@ -15,7 +20,7 @@
             <column name="N_LAST" length="45" not-null="true" />
         </property>
         <property name="NMid" type="string">
-            <column name="N_MID" length="45" not-null="true" />
+            <column name="N_MID" length="45" />
         </property>
         <property name="NNick" type="string">
             <column name="N_NICK" length="45" not-null="true" />

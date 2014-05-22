@@ -1,5 +1,10 @@
+/* Copyright (C) Rx4Dr, Inc - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Written by shakthydoss <shakthydoss@gmail.com>, 2014
+ */
+
 package com.rx4dr.service.model;
-// Generated 20 May, 2014 4:00:51 PM by Hibernate Tools 3.6.0
 
 
 import java.util.Date;
