@@ -9,6 +9,7 @@ import com.rx4dr.service.bo.PrescriptionBo;
 import com.rx4dr.service.error.FieldError;
 import com.rx4dr.service.error.FieldValidationException;
 import com.rx4dr.service.model.ResponseEntity;
+import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
 import com.rx4dr.service.util.ValidationUtil;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -103,4 +105,17 @@ public class PrescriptionController {
         return new ResponseEntity<Boolean>(status, result);
     }
 
+    @RequestMapping(value = "/getRoutes", method = RequestMethod.GET)
+    public ResponseEntity<List<Route>> getRoutes(){
+        logger.info("Entering getRoutes");
+        List<Route> result = prescriptionBo.getRoutes();      
+        return new ResponseEntity<List<Route>>(HttpStatus.OK.toString(), result);
+    }
+    
+    @RequestMapping(value = "/getDrugs", method = RequestMethod.GET)
+    public ResponseEntity<List<String>> getDrugs(){
+        logger.info("Entering getDrugs");
+        List<String> result = prescriptionBo.getDrugs();
+        return new ResponseEntity<List<String>>(HttpStatus.OK.toString(), result);
+    }
 }

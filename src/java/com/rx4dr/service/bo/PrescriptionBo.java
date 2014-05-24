@@ -6,6 +6,7 @@
 package com.rx4dr.service.bo;
 
 
+import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
 import java.util.List;
 
@@ -18,5 +19,7 @@ public interface PrescriptionBo {
 	public List<Rx>search(String name,boolean sortBydate, boolean sortByName);
 	public boolean delete(int id);
 	public boolean sendEmail(int id);
+        public List<Route> getRoutes();
+        public List<String> getDrugs();
 
 }

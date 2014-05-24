@@ -5,7 +5,9 @@
  */
 package com.rx4dr.service.dao;
 
+import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -45,6 +47,149 @@ public class PrescriptionDaoImpl extends HibernateDaoSupport implements  Prescri
     public boolean delete(int id) {
        logger.info("Entering delete");
         return false;        
+    }
+
+    @Override
+    public List<Route> getRoutes() {
+        logger.info("Entering getRoutes");
+        
+        List<Route> result = new ArrayList<Route>();
+        Route temp = new Route();
+        temp.setCode("O");
+        temp.setName("Oral");
+        result.add(temp);
+        
+        temp = new Route();
+        temp.setCode("LA");
+        temp.setName("local");
+        result.add(temp);
+
+        temp = new Route();
+        temp.setCode("SC");
+        temp.setName("subcutaneous");
+        result.add(temp);
+        
+        temp = new Route();
+        temp.setCode("IV");
+        temp.setName("intravenous");
+        result.add(temp);
+        
+        temp = new Route();
+        temp.setCode("P/R");
+        temp.setName("per rectum");
+        result.add(temp);
+        
+        temp = new Route();
+        temp.setCode("P/V");
+        temp.setName("per vaginum");
+        result.add(temp);
+                
+        return result;
+    }
+
+    @Override
+    public List<String> getDrugs() {
+        logger.info("Entering getDrugs");
+        List<String> drugs = new ArrayList<String>();
+        drugs.add("Albuterol");
+        drugs.add("alendronate");
+        drugs.add("Allopurinol");
+        drugs.add("Alprazolam");
+        drugs.add("Amitriptyline");
+        drugs.add("Amlodipine");
+        drugs.add("Amoxicillin");
+        drugs.add("Amoxicillin + Clavulanate");
+        drugs.add("APAP + Hydrocodone");
+        drugs.add("Atenolol");
+        drugs.add("Atorvastatin");
+        drugs.add("Azithromycin");
+        drugs.add("Carisoprodol");
+        drugs.add("Carvedilol");
+        drugs.add("Cefdinir");
+        drugs.add("Celecoxib");
+        drugs.add("Cephalexin");
+        drugs.add("Ciprofloxacin");
+        drugs.add("Citalopram");
+        drugs.add("Clonazepam");
+        drugs.add("Clonidine");
+        drugs.add("Clopidogrel");
+        drugs.add("Codeine + APAP");
+        drugs.add("Conjugated Estrogen");
+        drugs.add("Cyclobenzaprine");
+        drugs.add("Diazepam");
+        drugs.add("Digoxin");
+        drugs.add("Doxycycline");
+        drugs.add("Duloxetine");
+        drugs.add("Enalapril");
+        drugs.add("Escitalopram");
+        drugs.add("Esomeprazole");
+        drugs.add("Ethinyl estradiol + Drospirenone");
+        drugs.add("Ezetimibe");
+        drugs.add("Ezetimibe + Simvastatin");
+        drugs.add("Fenofibrate");
+        drugs.add("Fexofenadine");
+        drugs.add("Fluconazole");
+        drugs.add("Fluoxetine");
+        drugs.add("Fluticasone");
+        drugs.add("Fluticasone + Salmeterol");
+        drugs.add("Folic Acid");
+        drugs.add("Furosemide");
+        drugs.add("Gabapentin");
+        drugs.add("Glimepiride");
+        drugs.add("Glyburide");
+        drugs.add("Hydro- chlorothiazide (HCTZ)");
+        drugs.add("Ibuprofen");
+        drugs.add("Insulin Glargine");
+        drugs.add("Isosorbide Mononitrate");
+        drugs.add("Lansoprazole");
+        drugs.add("Levofloxacin");
+        drugs.add("Levothyroxine");
+        drugs.add("Lisinopril");
+        drugs.add("Lorazepam");
+        drugs.add("Losartan");
+        drugs.add("Lovastatin");
+        drugs.add("Meloxicam");
+        drugs.add("Metformin");
+        drugs.add("Methylphenidate");
+        drugs.add("Methyl- prednisolone");
+        drugs.add("metoprolol");
+        drugs.add("Mometasone");
+        drugs.add("Montelukast");
+        drugs.add("Naproxen");
+        drugs.add("Omeprazole");
+        drugs.add("Oseltamivir");
+        drugs.add("Oxycodone");
+        drugs.add("Oxycodone + APAP");
+        drugs.add("Paroxetine");
+        drugs.add("Penicillin vk");
+        drugs.add("Pioglitazone");
+        drugs.add("Potassium Chloride");
+        drugs.add("Pravastatin");
+        drugs.add("Prednisone");
+        drugs.add("Pregabalin");
+        drugs.add("Promethazine");
+        drugs.add("Propoxyphene + APAP");
+        drugs.add("Quetiapine");
+        drugs.add("Ramipril");
+        drugs.add("Ranitidine");
+        drugs.add("Rosuvastatin");
+        drugs.add("Sertraline");
+        drugs.add("Sildenafil");
+        drugs.add("Simvastatin");
+        drugs.add("Spironolactone");
+        drugs.add("Sulfamethoxazole + Trimethoprim");
+        drugs.add("Tamsulosin");
+        drugs.add("Temazepam");
+        drugs.add("Tramadol");
+        drugs.add("Trazodone");
+        drugs.add("Triamcinolone");
+        drugs.add("Triamterene");
+        drugs.add("Valacyclovir");
+        drugs.add("Valsartan");
+        drugs.add("Venlafaxine");
+        drugs.add("Warfarin");
+        drugs.add("Zolpidem");
+        return drugs;
     }
 
    

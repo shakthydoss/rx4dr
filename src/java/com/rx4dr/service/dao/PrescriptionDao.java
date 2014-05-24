@@ -5,6 +5,7 @@
  */
 package com.rx4dr.service.dao;
 
+import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
 import java.util.List;
 
@@ -17,5 +18,6 @@ public interface PrescriptionDao {
 	public Rx get(int id);	
 	public List<Rx>search(String name,boolean sortBydate, boolean sortByName);
 	public boolean delete(int id);	
-    
+        public List<Route> getRoutes();
+        public List<String> getDrugs();
 }

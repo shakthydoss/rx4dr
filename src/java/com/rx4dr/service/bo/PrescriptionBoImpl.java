@@ -6,6 +6,7 @@
 package com.rx4dr.service.bo;
 
 import com.rx4dr.service.dao.PrescriptionDao;
+import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
 import java.util.List;
 import org.apache.commons.logging.Log;
@@ -55,6 +56,18 @@ public class PrescriptionBoImpl implements PrescriptionBo {
     public boolean sendEmail(int id) {
         logger.info("Entering sendEmail");
         return false;
+    }
+
+    @Override
+    public List<Route> getRoutes() {
+        logger.info("Entering getRoutes");
+        return prescriptionDao.getRoutes();
+    }
+
+    @Override
+    public List<String> getDrugs() {
+        logger.info("Entering getDrugs");
+        return prescriptionDao.getDrugs();
     }
 
 }

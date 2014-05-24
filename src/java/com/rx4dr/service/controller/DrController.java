@@ -55,7 +55,7 @@ public class DrController {
             throw new FieldValidationException(errors);
         }  
         dr = drBo.add(dr);
-        logger.info("Exting add");
+        logger.info("Exiting  add");
         return new ResponseEntity<Dr>(HttpStatus.CREATED.toString(), dr);
     }
 
@@ -68,6 +68,7 @@ public class DrController {
             throw new FieldValidationException(errors);
         }
         Dr dr = drBo.getById(id);
+        logger.info("Exiting  id");
         return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);
     }
 
@@ -80,6 +81,7 @@ public class DrController {
             throw new FieldValidationException(errors);
         }
         Dr dr = drBo.getByEmail(email);
+        logger.info("Exiting  getByEmail");
         return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);
     }
 
@@ -92,6 +94,7 @@ public class DrController {
             throw new FieldValidationException(errors);
         }
         dr = drBo.update(dr);
+        logger.info("Exiting  update");
         return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);
     }
 
@@ -99,6 +102,7 @@ public class DrController {
     public ResponseEntity<Boolean> delete(@PathVariable int id) {
        logger.info("Entering delete");
        drBo.delete(id);
+       logger.info("Exiting  delete");
        return new ResponseEntity<Boolean>(HttpStatus.NO_CONTENT.toString(), true);        
     }
     
