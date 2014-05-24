@@ -1,56 +1,55 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.rx4dr.service.model.RxRec" table="rx_rec" catalog="rx4dr">
-        <id name="IRxRec" type="int">
-            <column name="I_RX_REC" />
-            <generator class="native" />
-        </id>
-        <many-to-one name="rx" class="com.rx4dr.service.model.Rx" fetch="select">
-            <column name="I_RX" not-null="true" />
-        </many-to-one>
-        <property name="NDrug" type="string">
-            <column name="N_DRUG" length="100" not-null="true" />
-        </property>
-        <property name="rte" type="string">
-            <column name="RTE" length="25" />
-        </property>
-        <property name="periodMorning" type="java.lang.Boolean">
-            <column name="PERIOD_MORNING" />
-        </property>
-        <property name="periodAfternoon" type="java.lang.Boolean">
-            <column name="PERIOD_AFTERNOON" />
-        </property>
-        <property name="periodEvening" type="java.lang.Boolean">
-            <column name="PERIOD_EVENING" />
-        </property>
-        <property name="periodNight" type="java.lang.Boolean">
-            <column name="PERIOD_NIGHT" />
-        </property>
-        <property name="dosageMorning" type="java.lang.Double">
-            <column name="DOSAGE_MORNING" precision="22" scale="0" />
-        </property>
-        <property name="dosageAfternoon" type="java.lang.Double">
-            <column name="DOSAGE_AFTERNOON" precision="22" scale="0" />
-        </property>
-        <property name="dosageEvening" type="java.lang.Double">
-            <column name="DOSAGE_EVENING" precision="22" scale="0" />
-        </property>
-        <property name="dosageNight" type="java.lang.Double">
-            <column name="DOSAGE_NIGHT" precision="22" scale="0" />
-        </property>
-        <property name="emptyStomach" type="java.lang.Boolean">
-            <column name="EMPTY_STOMACH" />
-        </property>
-        <property name="beforeStomach" type="java.lang.Boolean">
-            <column name="BEFORE_STOMACH" />
-        </property>
-        <property name="afterStomach" type="java.lang.Boolean">
-            <column name="AFTER_STOMACH" />
-        </property>
-        <property name="duration" type="int">
-            <column name="DURATION" not-null="true" />
-        </property>
-    </class>
+  <class catalog="rx4dr" name="com.rx4dr.service.model.RxRec" table="rx_rec">
+    <id name="IRxRec" type="int">
+      <column name="I_RX_REC"/>
+      <generator class="native"/>
+    </id>
+    <many-to-one class="com.rx4dr.service.model.Rx" fetch="select" name="rx">
+      <column name="I_RX" not-null="true"/>
+    </many-to-one>
+    <property name="NDrug" type="string">
+      <column length="100" name="N_DRUG" not-null="true"/>
+    </property>
+    <property name="rte" type="string">
+      <column length="25" name="RTE"/>
+    </property>
+    <property name="periodMorning" type="java.lang.Boolean">
+      <column name="PERIOD_MORNING"/>
+    </property>
+    <property name="periodAfternoon" type="java.lang.Boolean">
+      <column name="PERIOD_AFTERNOON"/>
+    </property>
+    <property name="periodEvening" type="java.lang.Boolean">
+      <column name="PERIOD_EVENING"/>
+    </property>
+    <property name="periodNight" type="java.lang.Boolean">
+      <column name="PERIOD_NIGHT"/>
+    </property>
+    <property name="dosageMorning" type="java.lang.Double">
+      <column name="DOSAGE_MORNING" precision="22" scale="0"/>
+    </property>
+    <property name="dosageAfternoon" type="java.lang.Double">
+      <column name="DOSAGE_AFTERNOON" precision="22" scale="0"/>
+    </property>
+    <property name="dosageEvening" type="java.lang.Double">
+      <column name="DOSAGE_EVENING" precision="22" scale="0"/>
+    </property>
+    <property name="dosageNight" type="java.lang.Double">
+      <column name="DOSAGE_NIGHT" precision="22" scale="0"/>
+    </property>
+    <property name="emptyStomach" type="java.lang.Boolean">
+      <column name="EMPTY_STOMACH"/>
+    </property>
+    <property name="beforeFood" type="java.lang.Boolean">
+      <column name="BEFORE_FOOD"/>
+    </property>
+    <property name="afterFood" type="java.lang.Boolean">
+      <column name="AFTER_FOOD"/>
+    </property>
+    <property name="duration" type="int">
+      <column name="DURATION" not-null="true"/>
+    </property>
+  </class>
 </hibernate-mapping>

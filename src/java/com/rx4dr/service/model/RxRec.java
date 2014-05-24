@@ -12,17 +12,17 @@ public class RxRec  implements java.io.Serializable {
      private Rx rx;
      private String NDrug;
      private String rte;
-     private Boolean periodMorning;
-     private Boolean periodAfternoon;
+     private Boolean periodMorning ;
+     private Boolean periodAfternoon ;
      private Boolean periodEvening;
      private Boolean periodNight;
      private Double dosageMorning;
      private Double dosageAfternoon;
-     private Double dosageEvening;
+     private Double dosageEvening ;
      private Double dosageNight;
      private Boolean emptyStomach;
-     private Boolean beforeStomach;
-     private Boolean afterStomach;
+     private Boolean beforeFood;
+     private Boolean afterFood;
      private int duration;
 
     public RxRec() {
@@ -49,8 +49,8 @@ public class RxRec  implements java.io.Serializable {
        this.dosageEvening = dosageEvening;
        this.dosageNight = dosageNight;
        this.emptyStomach = emptyStomach;
-       this.beforeStomach = beforeStomach;
-       this.afterStomach = afterStomach;
+       this.beforeFood = beforeStomach;
+       this.afterFood = afterStomach;
        this.duration = duration;
     }
    
@@ -145,20 +145,23 @@ public class RxRec  implements java.io.Serializable {
     public void setEmptyStomach(Boolean emptyStomach) {
         this.emptyStomach = emptyStomach;
     }
-    public Boolean getBeforeStomach() {
-        return this.beforeStomach;
+
+    public Boolean getBeforeFood() {
+        return beforeFood;
+    }
+
+    public void setBeforeFood(Boolean beforeFood) {
+        this.beforeFood = beforeFood;
+    }
+
+    public Boolean getAfterFood() {
+        return afterFood;
+    }
+
+    public void setAfterFood(Boolean afterFood) {
+        this.afterFood = afterFood;
     }
     
-    public void setBeforeStomach(Boolean beforeStomach) {
-        this.beforeStomach = beforeStomach;
-    }
-    public Boolean getAfterStomach() {
-        return this.afterStomach;
-    }
-    
-    public void setAfterStomach(Boolean afterStomach) {
-        this.afterStomach = afterStomach;
-    }
     public int getDuration() {
         return this.duration;
     }

@@ -11,6 +11,7 @@ import com.rx4dr.service.error.FieldValidationException;
 import com.rx4dr.service.model.ResponseEntity;
 import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
+import com.rx4dr.service.model.RxRec;
 import com.rx4dr.service.util.ValidationUtil;
 import java.util.List;
 import javax.ws.rs.QueryParam;
@@ -117,5 +118,10 @@ public class PrescriptionController {
         logger.info("Entering getDrugs");
         List<String> result = prescriptionBo.getDrugs();
         return new ResponseEntity<List<String>>(HttpStatus.OK.toString(), result);
+    }
+    
+     @RequestMapping(value = "/return", method = RequestMethod.GET)
+    public RxRec returnthis() {        
+        return new RxRec();
     }
 }
