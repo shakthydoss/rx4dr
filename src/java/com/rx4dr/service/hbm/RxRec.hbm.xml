@@ -6,7 +6,7 @@
       <column name="I_RX_REC"/>
       <generator class="native"/>
     </id>
-    <many-to-one class="com.rx4dr.service.model.Rx" fetch="join" name="rx" >
+    <many-to-one class="com.rx4dr.service.model.Rx" fetch="select" name="rx" >
       <column name="I_RX" not-null="true"/>      
     </many-to-one>
     
