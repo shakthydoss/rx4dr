@@ -108,10 +108,11 @@ public class ValidationUtil {
                 }else{
                     if(isLesserThanZero(rxRec.getDuration())){
                         errors.add(new FieldError("Duration", "is invalid"));                    
+                    }                   
+                    if(isNullOrEmpty(rxRec.getRte())) {
+                        errors.add(new FieldError("Route", "is invalid"));                    
                     }
-                    System.out.println(rxRec.getPeriodAfternoon());
-                    System.out.println(rxRec.getDosageAfternoon());
-                    /*
+                    
                     if(rxRec.getPeriodAfternoon() == true && rxRec.getDosageAfternoon() <= 0.0){
                         errors.add(new FieldError("Afternoon dosage", "is invalid"));                    
                     }
@@ -120,7 +121,7 @@ public class ValidationUtil {
                     }                    
                     if(rxRec.getPeriodMorning() == true && rxRec.getDosageMorning() <= 0.0){
                         errors.add(new FieldError("Morning dosage", "is invalid"));                    
-                    }
+                    }                                        
                     if(rxRec.getPeriodNight() == true && rxRec.getDosageNight() <= 0.0){
                         errors.add(new FieldError("Night dosage", "is invalid"));                    
                     }
@@ -137,7 +138,7 @@ public class ValidationUtil {
                     if(rxRec.getPeriodNight() == false && rxRec.getDosageNight() > 0.0){
                         errors.add(new FieldError("Night period", "is invalid"));                    
                     }
-                    */
+                    
                 }
             }
         }

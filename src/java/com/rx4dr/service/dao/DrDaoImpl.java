@@ -77,7 +77,7 @@ public class DrDaoImpl extends HibernateDaoSupport implements DrDao {
         return true;
     }
 
-    public void closeSession(Session s) {
+    private void closeSession(Session s) {
         if (s != null) {
             s.close();
         }

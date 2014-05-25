@@ -2,12 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.rx4dr.service.model.Rx" table="rx" catalog="rx4dr">
+    <class name="com.rx4dr.service.model.Rx" table="rx" catalog="rx4dr"  lazy="false" >
         <id name="IRx" type="int">
             <column name="I_RX" />
             <generator class="native" />
         </id>
-        <many-to-one name="dr" class="com.rx4dr.service.model.Dr" fetch="select">
+        <many-to-one name="dr" class="com.rx4dr.service.model.Dr" >
             <column name="I_DR" not-null="true" />
         </many-to-one>
         <property name="patientName" type="string">
@@ -31,7 +31,7 @@
         <property name="TStmpUpd" type="timestamp">
             <column name="T_STMP_UPD" length="19" />
         </property>
-        <set name="rxRecs" table="rx_rec" inverse="true" lazy="true" fetch="select">
+        <set name="rxRecs" table="rx_rec">
             <key>
                 <column name="I_RX" not-null="true" />
             </key>

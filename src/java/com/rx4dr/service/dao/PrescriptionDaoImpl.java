@@ -5,13 +5,19 @@
  */
 package com.rx4dr.service.dao;
 
+import com.rx4dr.service.model.Dr;
 import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
+import com.rx4dr.service.model.RxRec;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
@@ -28,13 +34,31 @@ public class PrescriptionDaoImpl extends HibernateDaoSupport implements  Prescri
     @Override
     public Rx add(Rx rx) {
         logger.info("Entering add");
-        return null;        
+        Session session = sessionFactory.openSession();                
+        session.save(rx);       
+        for (RxRec rxRec : rx.getRxRecs()) {    
+            Rx temp = new Rx();
+            temp.setIRx(rx.getIRx());
+            rxRec.setRx(temp);
+            session.save(rxRec);   
+        }
+        closeSession(session);
+        return rx;
     }
 
     @Override
     public Rx get(int id) {
-        logger.info("Entering get");
-        return null;        
+        logger.info("Entering get");   
+        
+        Session session = sessionFactory.openSession();
+     //   Criteria criteria = session.createCriteria(Rx.class);
+     //   criteria.add(Restrictions.eq("IRx", id));
+     //   Rx rx = (Rx) criteria.uniqueResult();
+        Query q = session.createQuery("from Rx where IRx = :IRx");
+        q.setParameter("IRx", id);
+        Rx rx = (Rx) q.uniqueResult();        
+        return rx;       
+        
     }   
 
     @Override
@@ -192,6 +216,10 @@ public class PrescriptionDaoImpl extends HibernateDaoSupport implements  Prescri
         return drugs;
     }
 
-   
+    private void closeSession(Session s) {
+        if (s != null) {
+            s.close();
+        }
+    }
     
 }

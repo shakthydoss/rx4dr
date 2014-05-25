@@ -8,6 +8,7 @@ package com.rx4dr.service.bo;
 import com.rx4dr.service.dao.PrescriptionDao;
 import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
+import java.util.Date;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,8 +31,15 @@ public class PrescriptionBoImpl implements PrescriptionBo {
 
     @Override
     public Rx add(Rx rx) {
-        logger.info("Entering add");
-        return null;
+        logger.info("Entering add");        
+        // set created by and updated by
+        rx.setIUserCreatd(rx.getDr().getIDr());
+        rx.setIUserUpd(rx.getDr().getIDr());
+        // set created date and upadate date.
+        Date now = new Date();
+        rx.setTStmpCreatd(now);        
+        rx.setTStmpUpd(now);        
+        return prescriptionDao.add(rx);
     }
 
     @Override

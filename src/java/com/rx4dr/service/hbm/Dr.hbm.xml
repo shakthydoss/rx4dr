@@ -37,7 +37,7 @@
         <property name="TStmpUpd" type="timestamp">
             <column name="T_STMP_UPD" length="19" />
         </property>
-        <set name="rxes" table="rx" inverse="true" lazy="true" fetch="select">
+        <set name="rxes" table="rx" fetch="join">
             <key>
                 <column name="I_DR" not-null="true" />
             </key>

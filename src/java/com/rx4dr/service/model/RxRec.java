@@ -40,6 +40,7 @@ public class RxRec  implements java.io.Serializable {
        this.rx = rx;
        this.NDrug = NDrug;
        this.rte = rte;
+       System.out.println("inside constructor periodMorning "+periodMorning);
        this.periodMorning = periodMorning;
        this.periodAfternoon = periodAfternoon;
        this.periodEvening = periodEvening;
@@ -86,57 +87,57 @@ public class RxRec  implements java.io.Serializable {
         return this.periodMorning;
     }
     
-    public void setPeriodMorning(Boolean periodMorning) {
-        this.periodMorning = periodMorning;
+    public void setPeriodMorning(Boolean periodMorning) {        
+        this.periodMorning = (periodMorning !=null)? periodMorning:false;
     }
     public Boolean getPeriodAfternoon() {
         return this.periodAfternoon;
     }
     
     public void setPeriodAfternoon(Boolean periodAfternoon) {
-        this.periodAfternoon = periodAfternoon;
+        this.periodAfternoon = (periodAfternoon != null) ? periodAfternoon : false ;
     }
     public Boolean getPeriodEvening() {
         return this.periodEvening;
     }
     
     public void setPeriodEvening(Boolean periodEvening) {
-        this.periodEvening = periodEvening;
+        this.periodEvening = (periodEvening != null) ? periodEvening : false;
     }
     public Boolean getPeriodNight() {
         return this.periodNight;
     }
     
     public void setPeriodNight(Boolean periodNight) {
-        this.periodNight = periodNight;
+        this.periodNight = (periodNight !=null) ? periodNight : false;
     }
     public Double getDosageMorning() {
         return this.dosageMorning;
     }
     
     public void setDosageMorning(Double dosageMorning) {
-        this.dosageMorning = dosageMorning;
+        this.dosageMorning = (dosageMorning!=null)? dosageMorning : 0.0;
     }
     public Double getDosageAfternoon() {
         return this.dosageAfternoon;
     }
     
     public void setDosageAfternoon(Double dosageAfternoon) {
-        this.dosageAfternoon = dosageAfternoon;
+        this.dosageAfternoon = (dosageAfternoon !=null)?dosageAfternoon : 0.0; 
     }
     public Double getDosageEvening() {
         return this.dosageEvening;
     }
     
     public void setDosageEvening(Double dosageEvening) {
-        this.dosageEvening = dosageEvening;
+        this.dosageEvening = (dosageEvening!=null)?dosageEvening:0.0;
     }
     public Double getDosageNight() {
         return this.dosageNight;
     }
     
     public void setDosageNight(Double dosageNight) {
-        this.dosageNight = dosageNight;
+        this.dosageNight = (dosageNight != null)?dosageNight:0.0;
     }
     public Boolean getEmptyStomach() {
         return this.emptyStomach;

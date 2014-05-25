@@ -65,6 +65,7 @@ public class PrescriptionController {
             throw new FieldValidationException(errors);
         }
         Rx result = prescriptionBo.get(id);
+        System.out.println("going to return from controller.......");
         return new ResponseEntity<Rx>(status, result);
     }
 
