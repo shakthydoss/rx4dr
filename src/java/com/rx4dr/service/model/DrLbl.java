@@ -6,6 +6,10 @@
 
 package com.rx4dr.service.model;
 
+/**
+ *
+ * @author shakthydoss
+ */
 public class DrLbl  implements java.io.Serializable {
 
 

@@ -7,9 +7,11 @@
             <column name="I_RX" />
             <generator class="native" />
         </id>
-        <many-to-one name="dr" class="com.rx4dr.service.model.Dr" fetch="join">
+                      
+        <many-to-one name="dr" class="com.rx4dr.service.model.Dr" lazy="false" fetch="select">
             <column name="I_DR" not-null="true" />
         </many-to-one>
+                
         <property name="patientName" type="string">
             <column name="PATIENT_NAME" length="45" not-null="true" />
         </property>
@@ -30,12 +32,14 @@
         </property>
         <property name="TStmpUpd" type="timestamp">
             <column name="T_STMP_UPD" length="19" />
-        </property>
-        <set name="rxRecs" table="rx_rec" inverse="true" lazy="true" fetch="join">
+        </property>        
+        
+        <set name="rxRecs" table="rx_rec" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="I_RX" not-null="true" />
             </key>
             <one-to-many class="com.rx4dr.service.model.RxRec" />
         </set>
+                
     </class>
 </hibernate-mapping>

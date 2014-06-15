@@ -10,22 +10,20 @@ package com.rx4dr.service.model;
  * @author shakthydoss
  * @param <T>
  */
-public class ResponseEntity<T> {
-    
+public class ResponseEntity<T> implements java.io.Serializable {
+
     private String code;
     private T data;
 
-    public ResponseEntity(String code , T data){
+    public ResponseEntity(String code, T data) {
         this.code = code;
         this.data = data;
     }
 
     public ResponseEntity() {
-     /*this is defualt co*/   
+        /*this is defualt co*/
     }
 
-  
-    
     public String getCode() {
         return code;
     }
@@ -41,7 +39,5 @@ public class ResponseEntity<T> {
     public void setData(T data) {
         this.data = data;
     }
-    
-    
-    
+
 }

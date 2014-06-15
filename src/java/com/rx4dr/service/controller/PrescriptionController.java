@@ -8,6 +8,7 @@ package com.rx4dr.service.controller;
 import com.rx4dr.service.bo.PrescriptionBo;
 import com.rx4dr.service.error.FieldError;
 import com.rx4dr.service.error.FieldValidationException;
+import com.rx4dr.service.model.Dr;
 import com.rx4dr.service.model.ResponseEntity;
 import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
@@ -64,8 +65,10 @@ public class PrescriptionController {
             logger.debug(FieldValidationException + " : " + errors);
             throw new FieldValidationException(errors);
         }
-        Rx result = prescriptionBo.get(id);
-        System.out.println("going to return from controller.......");
+        Rx result = prescriptionBo.get(id);        
+        Dr dr = result.getDr();                      
+        Rx temp = new Rx();
+        temp.setDr(dr);
         return new ResponseEntity<Rx>(status, result);
     }
 
@@ -121,7 +124,7 @@ public class PrescriptionController {
         return new ResponseEntity<List<String>>(HttpStatus.OK.toString(), result);
     }
     
-     @RequestMapping(value = "/return", method = RequestMethod.GET)
+    @RequestMapping(value = "/return", method = RequestMethod.GET)
     public RxRec returnthis() {        
         return new RxRec();
     }

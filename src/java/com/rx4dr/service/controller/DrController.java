@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/dr")
-public class DrController {
+public class DrController  implements java.io.Serializable{
 
     final Log logger = LogFactory.getLog(getClass());
 

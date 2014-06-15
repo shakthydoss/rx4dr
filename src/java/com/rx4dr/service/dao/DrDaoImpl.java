@@ -42,7 +42,7 @@ public class DrDaoImpl extends HibernateDaoSupport implements DrDao {
         logger.info("Entering getById");
         Session session = sessionFactory.openSession();
         Criteria criteria = session.createCriteria(Dr.class);
-        criteria.add(Restrictions.eq("IUser", id));
+        criteria.add(Restrictions.eq("IDr", id));
         Dr dr = (Dr) criteria.uniqueResult();
         return dr;
     }

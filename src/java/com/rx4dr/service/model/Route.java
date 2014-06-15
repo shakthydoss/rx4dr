@@ -10,7 +10,7 @@ package com.rx4dr.service.model;
  * @author shakthydoss
  */
 public class Route implements java.io.Serializable {
-    
+
     String name;
     String code;
     String description;
@@ -38,5 +38,5 @@ public class Route implements java.io.Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-        
+
 }

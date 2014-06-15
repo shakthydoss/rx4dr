@@ -57,8 +57,8 @@ public class PrescriptionDaoImpl extends HibernateDaoSupport implements  Prescri
         Query q = session.createQuery("from Rx where IRx = :IRx");
         q.setParameter("IRx", id);
         Rx rx = (Rx) q.uniqueResult();   
-        System.out.println(rx.getDr().getIDr());
-        System.out.println(rx.getRxRecs());
+//        System.out.println(rx.getDr().getIDr());
+//        System.out.println(rx.getRxRecs());
         return rx;       
         
     }   
