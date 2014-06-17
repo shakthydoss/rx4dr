@@ -26,6 +26,10 @@ public class ValidationUtil {
         }
         if (isNullOrEmpty(dr.getXEmail())) {
             errors.add(new FieldError("user email", "is invalid"));
+        } else {
+            if (!new Util().validateEmail(dr.getXEmail())) {
+                errors.add(new FieldError("user email", "is invalid"));
+            }
         }
         if (isNullOrEmpty(dr.getNNick())) {
             errors.add(new FieldError("user nickname", "is invalid"));
@@ -52,6 +56,10 @@ public class ValidationUtil {
         List<FieldError> errors = new ArrayList<FieldError>();
         if (isNullOrEmpty(email)) {
             errors.add(new FieldError("email", "is invalid"));
+        } else {
+            if (!new Util().validateEmail(email)) {
+                errors.add(new FieldError("email", "is invalid"));
+            }
         }
         return errors;
     }
@@ -103,46 +111,46 @@ public class ValidationUtil {
         }
 
         if (rx.getRxRecs() == null || rx.getRxRecs().isEmpty()) {
-            errors.add(new FieldError("Drug name", "is invalid"));            
+            errors.add(new FieldError("Drug name", "is invalid"));
         } else {
             Set<RxRec> RxRecs = rx.getRxRecs();
             for (RxRec rxRec : RxRecs) {
                 if (isNullOrEmpty(rxRec.getNDrug())) {
-                    errors.add(new FieldError("Drug name", "is invalid"));                    
-                }else{
-                    if(isLesserThanZero(rxRec.getDuration())){
-                        errors.add(new FieldError("Duration", "is invalid"));                    
-                    }                   
-                    if(isNullOrEmpty(rxRec.getRte())) {
-                        errors.add(new FieldError("Route", "is invalid"));                    
+                    errors.add(new FieldError("Drug name", "is invalid"));
+                } else {
+                    if (isLesserThanZero(rxRec.getDuration())) {
+                        errors.add(new FieldError("Duration", "is invalid"));
                     }
-                    
-                    if(rxRec.getPeriodAfternoon() == true && rxRec.getDosageAfternoon() <= 0.0){
-                        errors.add(new FieldError("Afternoon dosage", "is invalid"));                    
+                    if (isNullOrEmpty(rxRec.getRte())) {
+                        errors.add(new FieldError("Route", "is invalid"));
                     }
-                    if(rxRec.getPeriodEvening() == true && rxRec.getDosageEvening() <= 0.0){
-                        errors.add(new FieldError("Evening dosage", "is invalid"));                    
-                    }                    
-                    if(rxRec.getPeriodMorning() == true && rxRec.getDosageMorning() <= 0.0){
-                        errors.add(new FieldError("Morning dosage", "is invalid"));                    
-                    }                                        
-                    if(rxRec.getPeriodNight() == true && rxRec.getDosageNight() <= 0.0){
-                        errors.add(new FieldError("Night dosage", "is invalid"));                    
+
+                    if (rxRec.getPeriodAfternoon() == true && rxRec.getDosageAfternoon() <= 0.0) {
+                        errors.add(new FieldError("Afternoon dosage", "is invalid"));
                     }
-                    
-                    if(rxRec.getPeriodAfternoon() == false && rxRec.getDosageAfternoon() > 0.0){
-                        errors.add(new FieldError("Afternoon period", "is invalid"));                    
+                    if (rxRec.getPeriodEvening() == true && rxRec.getDosageEvening() <= 0.0) {
+                        errors.add(new FieldError("Evening dosage", "is invalid"));
                     }
-                    if(rxRec.getPeriodEvening() == false && rxRec.getDosageEvening() > 0.0){
-                        errors.add(new FieldError("Evening period", "is invalid"));                    
-                    }                    
-                    if(rxRec.getPeriodMorning() == false && rxRec.getDosageMorning() > 0.0){
-                        errors.add(new FieldError("Morning period", "is invalid"));                    
+                    if (rxRec.getPeriodMorning() == true && rxRec.getDosageMorning() <= 0.0) {
+                        errors.add(new FieldError("Morning dosage", "is invalid"));
                     }
-                    if(rxRec.getPeriodNight() == false && rxRec.getDosageNight() > 0.0){
-                        errors.add(new FieldError("Night period", "is invalid"));                    
+                    if (rxRec.getPeriodNight() == true && rxRec.getDosageNight() <= 0.0) {
+                        errors.add(new FieldError("Night dosage", "is invalid"));
                     }
-                    
+
+                    if (rxRec.getPeriodAfternoon() == false && rxRec.getDosageAfternoon() > 0.0) {
+                        errors.add(new FieldError("Afternoon period", "is invalid"));
+                    }
+                    if (rxRec.getPeriodEvening() == false && rxRec.getDosageEvening() > 0.0) {
+                        errors.add(new FieldError("Evening period", "is invalid"));
+                    }
+                    if (rxRec.getPeriodMorning() == false && rxRec.getDosageMorning() > 0.0) {
+                        errors.add(new FieldError("Morning period", "is invalid"));
+                    }
+                    if (rxRec.getPeriodNight() == false && rxRec.getDosageNight() > 0.0) {
+                        errors.add(new FieldError("Night period", "is invalid"));
+                    }
+
                 }
             }
         }

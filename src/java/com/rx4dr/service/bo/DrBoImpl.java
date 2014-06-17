@@ -6,8 +6,12 @@
 package com.rx4dr.service.bo;
 
 import com.rx4dr.service.dao.DrDao;
+import com.rx4dr.service.error.FieldError;
+import com.rx4dr.service.error.FieldValidationException;
 import com.rx4dr.service.model.Dr;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -30,8 +34,16 @@ public class DrBoImpl implements DrBo{
     }
             
     @Override
-    public Dr add(Dr dr) {
+    public Dr add(Dr dr) {        
         logger.info("Entering add");
+        // check email id already exist.
+        if(getByEmail(dr.getXEmail()) != null){
+            // throw email already exist. 
+            List<FieldError> errors = new ArrayList<FieldError>();
+            FieldError temp = new FieldError("Email Id", "already exit");
+            errors.add(temp);
+            throw new FieldValidationException(errors);
+        }        
         // set created by system.
         dr.setIUserCreatd(0);
         dr.setIUserUpd(0);        

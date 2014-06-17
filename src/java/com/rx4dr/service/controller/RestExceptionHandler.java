@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.NonUniqueObjectException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.GenericJDBCException;
 import org.hibernate.exception.JDBCConnectionException;
@@ -71,9 +72,21 @@ public class RestExceptionHandler {
         map.put(description, e.getFieldErrors());
         return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
     }
-
+    
+    
+    @ExceptionHandler(NonUniqueObjectException.class)
+    public ResponseEntity<Map<String, Object>> NonUniqueObjectExceptionHandler(
+            NonUniqueObjectException e) {
+        logger.debug("Enyeting JDBCConnectionException");
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put(status, "500");
+        map.put(error, e.getClass().getSimpleName());
+        map.put(description, e.getMessage());
+        return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+    }
+    
     @ExceptionHandler(JDBCConnectionException.class)
-    public ResponseEntity<Map<String, Object>> JDBCConnectionExceptionExceptionExceptionHandler(
+    public ResponseEntity<Map<String, Object>> JDBCConnectionExceptionHandler(
             JDBCConnectionException e) {
         logger.debug("Enyeting JDBCConnectionException");
         Map<String, Object> map = new HashMap<String, Object>();
@@ -84,7 +97,7 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(SQLGrammarException.class)
-    public ResponseEntity<Map<String, Object>> SQLGrammarExceptionExceptionExceptionHandler(
+    public ResponseEntity<Map<String, Object>> SQLGrammarExceptionHandler(
             SQLGrammarException e) {
         logger.debug("Enyeting SQLGrammarException");
         Map<String, Object> map = new HashMap<String, Object>();
@@ -95,7 +108,7 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<Map<String, Object>> ConstraintViolationExceptionExceptionHandler(
+    public ResponseEntity<Map<String, Object>> ConstraintViolationExceptionHandler(
             ConstraintViolationException e) {
         logger.debug("Enyeting ConstraintViolationException");
         Map<String, Object> map = new HashMap<String, Object>();
@@ -106,7 +119,7 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(GenericJDBCException.class)
-    public ResponseEntity<Map<String, Object>> GenericJDBCExceptionExceptionExceptionHandler(
+    public ResponseEntity<Map<String, Object>> GenericJDBCExceptionExceptionHandler(
             GenericJDBCException e) {
         logger.debug("Enyeting GenericJDBCException");
         Map<String, Object> map = new HashMap<String, Object>();

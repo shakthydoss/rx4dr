@@ -72,14 +72,14 @@ public class DrController  implements java.io.Serializable{
         return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);
     }
 
-    @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
+    @RequestMapping(value = "/email/{email:.+}", method = RequestMethod.GET)
     public ResponseEntity<Dr> getByEmail(@PathVariable String email) {
         logger.info("Entering getByEmail");
         List<FieldError> errors = validationUtil.UserGetByEmail(email);
         if (errors.size() > 0) {
             logger.debug(FieldValidationException + " : " + errors);
             throw new FieldValidationException(errors);
-        }
+        }        
         Dr dr = drBo.getByEmail(email);
         logger.info("Exiting  getByEmail");
         return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);

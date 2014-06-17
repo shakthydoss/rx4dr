@@ -7,9 +7,11 @@ package com.rx4dr.service.dao;
 
 import com.rx4dr.service.model.Dr;
 import java.sql.SQLException;
+import java.util.Date;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -53,26 +55,38 @@ public class DrDaoImpl extends HibernateDaoSupport implements DrDao {
         Session session = sessionFactory.openSession();
         Criteria criteria = session.createCriteria(Dr.class);
         criteria.add(Restrictions.eq("XEmail", email));
-        Dr dr = (Dr) criteria.uniqueResult();
+        Dr dr = (Dr) criteria.uniqueResult();       
         return dr;
     }
 
     @Override
     public Dr update(Dr dr) {
         logger.info("Entering update");
-        Session session = sessionFactory.openSession();       
-        session.update(dr);        
+        Session session = sessionFactory.openSession();                                     
+        String hql = "UPDATE  Dr set NFirst = :NFirst , NLast = :NLast , NMid = :NMid , NNick = :NNick , XEmail = :XEmail , XPh = :XPh WHERE IDr = :IDr";
+        Query query = session.createQuery(hql);
+        query.setParameter("NFirst", dr.getNFirst());
+        query.setParameter("NLast", dr.getNLast());
+        query.setParameter("NMid", dr.getNMid());
+        query.setParameter("NNick", dr.getNNick());
+        query.setParameter("XEmail", dr.getXEmail());
+        query.setParameter("XPh", dr.getXPh());
+        query.setParameter("IDr", dr.getIDr());
+        query.executeUpdate();
+        Dr currentObject = (Dr) session.load(Dr.class, dr.getIDr());
+        session.flush();
         closeSession(session);
-        return dr;
+        return currentObject;
     }
 
     @Override
     public boolean delete(int id) {
-        logger.info("Entering delete");
+        logger.info("Entering delete");        
         Session session = sessionFactory.openSession();
         Dr u = new Dr();
         u.setIDr(id);        
-        session.delete(u);        
+        session.delete(u);  
+        session.flush();
         closeSession(session);
         return true;
     }
