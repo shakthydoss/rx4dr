@@ -65,10 +65,7 @@ public class PrescriptionController {
             logger.debug(FieldValidationException + " : " + errors);
             throw new FieldValidationException(errors);
         }
-        Rx result = prescriptionBo.get(id);        
-        Dr dr = result.getDr();                      
-        Rx temp = new Rx();
-        temp.setDr(dr);
+        Rx result = prescriptionBo.get(id);                
         return new ResponseEntity<Rx>(status, result);
     }
 
