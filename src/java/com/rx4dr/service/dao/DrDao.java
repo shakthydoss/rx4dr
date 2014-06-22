@@ -6,6 +6,7 @@
 package com.rx4dr.service.dao;
 
 import com.rx4dr.service.model.Dr;
+import com.rx4dr.service.model.DrLbl;
 
 /**
  *
@@ -19,4 +20,8 @@ public interface DrDao {
     public Dr update(Dr dr);
     public boolean delete(int id);
     
+    public DrLbl getDrLableBy(int drId);
+    public DrLbl addDrLable(DrLbl drLbl);
+    public DrLbl updateDrLable(DrLbl drLbl);
+    public boolean deleteDrLableBy(int drId);
 }

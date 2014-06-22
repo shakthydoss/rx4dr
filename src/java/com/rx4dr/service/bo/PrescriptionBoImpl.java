@@ -6,6 +6,7 @@
 package com.rx4dr.service.bo;
 
 import com.rx4dr.service.dao.PrescriptionDao;
+import com.rx4dr.service.model.DrLbl;
 import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
 import java.util.Date;
@@ -77,5 +78,5 @@ public class PrescriptionBoImpl implements PrescriptionBo {
         logger.info("Entering getDrugs");
         return prescriptionDao.getDrugs();
     }
-
+   
 }

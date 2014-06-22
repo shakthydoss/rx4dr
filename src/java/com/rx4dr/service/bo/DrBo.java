@@ -6,6 +6,7 @@
 package com.rx4dr.service.bo;
 
 import com.rx4dr.service.model.Dr;
+import com.rx4dr.service.model.DrLbl;
 
 /**
  *
@@ -17,5 +18,10 @@ public interface DrBo {
     public Dr getByEmail(String email);
     public Dr update(Dr dr);
     public boolean delete(int id);
+    
+    public DrLbl getDrLableBy(int drId);
+    public DrLbl addDrLable(DrLbl drLbl);
+    public DrLbl updateDrLable(DrLbl drLbl);
+    public boolean deleteDrLableBy(int drId);
 
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.rx4dr.service.model.DrLbl" table="dr_lbl" catalog="rx4dr">
+    <class name="com.rx4dr.service.model.DrLbl" table="dr_lbl" catalog="rx4dr">        
         <id name="IDocIbl" type="int">
             <column name="I_DOC_IBL" />
             <generator class="native" />

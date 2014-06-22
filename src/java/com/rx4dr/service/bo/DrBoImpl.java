@@ -9,6 +9,7 @@ import com.rx4dr.service.dao.DrDao;
 import com.rx4dr.service.error.FieldError;
 import com.rx4dr.service.error.FieldValidationException;
 import com.rx4dr.service.model.Dr;
+import com.rx4dr.service.model.DrLbl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -75,7 +76,31 @@ public class DrBoImpl implements DrBo{
     @Override
     public boolean delete(int id) {
         logger.info("Entering delete");
-         return drDao.delete(id);
+        return drDao.delete(id);
+    }
+
+    @Override
+    public DrLbl getDrLableBy(int drId) {
+        logger.info("Entering getDrLableBy");
+        return drDao.getDrLableBy(drId);
+    }
+
+    @Override
+    public DrLbl addDrLable(DrLbl drLbl) {
+        logger.info("Entering createDrLable");
+        return drDao.addDrLable(drLbl);
+    }
+
+    @Override
+    public DrLbl updateDrLable(DrLbl drLbl) {
+       logger.info("Entering updateDrLable");
+       return drDao.updateDrLable(drLbl);
+    }
+
+    @Override
+    public boolean deleteDrLableBy(int drId) {
+        logger.info("Entering deleteDrLableBy");
+        return drDao.deleteDrLableBy(drId);
     }
     
 }

@@ -6,6 +6,7 @@
 package com.rx4dr.service.dao;
 
 import com.rx4dr.service.model.Dr;
+import com.rx4dr.service.model.DrLbl;
 import java.sql.SQLException;
 import java.util.Date;
 import org.apache.commons.logging.Log;
@@ -72,11 +73,10 @@ public class DrDaoImpl extends HibernateDaoSupport implements DrDao {
         query.setParameter("XEmail", dr.getXEmail());
         query.setParameter("XPh", dr.getXPh());
         query.setParameter("IDr", dr.getIDr());
-        query.executeUpdate();
-        Dr currentObject = (Dr) session.load(Dr.class, dr.getIDr());
+        query.executeUpdate();        
         session.flush();
         closeSession(session);
-        return currentObject;
+        return null;
     }
 
     @Override
@@ -91,9 +91,60 @@ public class DrDaoImpl extends HibernateDaoSupport implements DrDao {
         return true;
     }
 
+    @Override
+    public DrLbl getDrLableBy(int drId) {
+        logger.info("Entering getDrLableBy");        
+        Session session = sessionFactory.openSession();
+        Criteria criteria = session.createCriteria(DrLbl.class);
+        criteria.add(Restrictions.eq("IDrId", drId));
+        DrLbl drLbl = (DrLbl) criteria.uniqueResult();       
+        return drLbl;
+    }
+    
+    @Override
+    public DrLbl addDrLable(DrLbl drLbl) {
+      logger.info("Entering createDrLable");
+      Session session = sessionFactory.openSession();
+      session.save(drLbl);
+      session.flush();
+      closeSession(session);
+      return drLbl;
+    }
+    
+     @Override
+    public DrLbl updateDrLable(DrLbl drLbl) {
+       logger.info("Entering updateDrLable");
+       Session session = sessionFactory.openSession();
+       Query query = session.createQuery("update DrLbl set lbl1 = :lbl1 , lbl2 = :lbl2 , lbl3 = :lbl3 , lbl4 = :lbl4  where IDocIbl = :IDocIbl and  IDrId = :IDrId");
+       query.setParameter("lbl1", drLbl.getLbl1());
+       query.setParameter("lbl2", drLbl.getLbl2());
+       query.setParameter("lbl3", drLbl.getLbl3());
+       query.setParameter("lbl4", drLbl.getLbl4());
+       query.setParameter("IDocIbl", drLbl.getIDocIbl());
+       query.setParameter("IDrId", drLbl.getIDrId());
+       query.executeUpdate();
+       session.flush();
+       closeSession(session);
+       return null;
+    }
+
+    @Override
+    public boolean deleteDrLableBy(int drId) {
+        logger.info("Entering delereDrLableBy");
+        Session session = sessionFactory.openSession();        
+        Query query = session.createQuery("Delete from DrLbl where IDrId = :IDrId");
+        query.setParameter("IDrId", drId);
+        query.executeUpdate();             
+        session.flush();
+        closeSession(session);              
+        return true;
+    }
+
+    
     private void closeSession(Session s) {
         if (s != null) {
             s.close();
         }
     }
+   
 }

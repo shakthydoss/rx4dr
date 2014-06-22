@@ -6,6 +6,7 @@
 package com.rx4dr.service.bo;
 
 
+import com.rx4dr.service.model.DrLbl;
 import com.rx4dr.service.model.Route;
 import com.rx4dr.service.model.Rx;
 import java.util.List;
@@ -22,4 +23,5 @@ public interface PrescriptionBo {
         public List<Route> getRoutes();
         public List<String> getDrugs();
 
+       
 }

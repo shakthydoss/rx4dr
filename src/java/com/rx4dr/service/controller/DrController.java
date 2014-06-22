@@ -9,6 +9,7 @@ import com.rx4dr.service.bo.DrBo;
 import com.rx4dr.service.error.FieldError;
 import com.rx4dr.service.error.FieldValidationException;
 import com.rx4dr.service.model.Dr;
+import com.rx4dr.service.model.DrLbl;
 import com.rx4dr.service.model.ResponseEntity;
 import com.rx4dr.service.util.ValidationUtil;
 import java.util.List;
@@ -93,22 +94,77 @@ public class DrController  implements java.io.Serializable{
             logger.debug(FieldValidationException + " : " + errors);
             throw new FieldValidationException(errors);
         }
-        dr = drBo.update(dr);
+        Dr temp = drBo.update(dr);
+        temp = drBo.getById(dr.getIDr());
         logger.info("Exiting  update");
-        return new ResponseEntity<Dr>(HttpStatus.OK.toString(), dr);
+        return new ResponseEntity<Dr>(HttpStatus.OK.toString(), temp);
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public ResponseEntity<Boolean> delete(@PathVariable int id) {
        logger.info("Entering delete");
-       drBo.delete(id);
+        List<FieldError> errors = validationUtil.userDelete(id);
+        if (errors.size() > 0) {
+            logger.debug(FieldValidationException + " : " + errors);
+            throw new FieldValidationException(errors);
+        }
+       Boolean temp = drBo.delete(id);
        logger.info("Exiting  delete");
-       return new ResponseEntity<Boolean>(HttpStatus.NO_CONTENT.toString(), true);        
+       return new ResponseEntity<Boolean>(HttpStatus.NO_CONTENT.toString(), temp);        
+    }
+    
+    @RequestMapping(value = "getDrLableBy/{drId}" , method = RequestMethod.GET)
+    public ResponseEntity<DrLbl> getDrLableBy(@PathVariable int drId){
+        logger.info("Entering getDrLableBy");
+        List<FieldError> errors = validationUtil.userGetDrLableBy(drId);
+        if (errors.size() > 0) {
+            logger.debug(FieldValidationException + " : " + errors);
+            throw new FieldValidationException(errors);
+        }
+        DrLbl temp = drBo.getDrLableBy(drId);
+        return new ResponseEntity<DrLbl>(HttpStatus.OK.toString(), temp);
+    }
+    
+    @RequestMapping(value = "/addDrLable" , method = RequestMethod.POST)
+    public ResponseEntity<DrLbl> addDrLable(@RequestBody DrLbl drLbl){
+        logger.info("Entering addDrLable");
+        List<FieldError> errors = validationUtil.userAddDrLable(drLbl);
+         if (errors.size() > 0) {
+            logger.debug(FieldValidationException + " : " + errors);
+            throw new FieldValidationException(errors);
+        }
+        DrLbl temp = drBo.addDrLable(drLbl);
+        return new ResponseEntity<DrLbl>(HttpStatus.OK.toString(), temp);        
+    }
+    
+    @RequestMapping(value = "/updateDrLable" , method = RequestMethod.POST)
+    public ResponseEntity<DrLbl> updateDrLable(@RequestBody DrLbl drLbl){
+        logger.info("Entering updateDrLable");
+         List<FieldError> errors =  validationUtil.userUpdateDrLable(drLbl);
+         if (errors.size() > 0) {
+            logger.debug(FieldValidationException + " : " + errors);
+            throw new FieldValidationException(errors);
+        }
+        DrLbl temp = drBo.updateDrLable(drLbl);
+        temp = drBo.getDrLableBy(drLbl.getIDrId());
+        return new ResponseEntity<DrLbl>(HttpStatus.OK.toString(), temp);        
+    }
+    
+    @RequestMapping(value = "deleteDrLableBy/{drId}" , method = RequestMethod.GET)
+    public ResponseEntity<Boolean> deleteDrLableBy(@PathVariable int drId){
+        logger.info("Entering deleteDrLableBy");
+         List<FieldError> errors = validationUtil.userDeleteDrLableBy(drId);
+         if (errors.size() > 0) {
+            logger.debug(FieldValidationException + " : " + errors);
+            throw new FieldValidationException(errors);
+        }
+        Boolean temp = drBo.deleteDrLableBy(drId);
+        return new ResponseEntity<Boolean>(HttpStatus.OK.toString(), temp);        
     }
     
     @RequestMapping(value = "/return", method = RequestMethod.GET)
-    public Dr returnthis() {
-        Dr u = new Dr();
-        return u;
+    public DrLbl returnthis() {
+        DrLbl temp = new DrLbl();
+        return temp;
     }
 }

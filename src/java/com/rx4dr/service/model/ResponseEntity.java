@@ -10,7 +10,7 @@ package com.rx4dr.service.model;
  * @author shakthydoss
  * @param <T>
  */
-public class ResponseEntity<T> implements java.io.Serializable {
+public class ResponseEntity<T>  {
 
     private String code;
     private T data;

@@ -7,6 +7,7 @@ package com.rx4dr.service.util;
 
 import com.rx4dr.service.error.FieldError;
 import com.rx4dr.service.model.Dr;
+import com.rx4dr.service.model.DrLbl;
 import com.rx4dr.service.model.Rx;
 import com.rx4dr.service.model.RxRec;
 import java.util.ArrayList;
@@ -85,6 +86,60 @@ public class ValidationUtil {
         return errors;
     }
 
+    public List<FieldError> userDelete(int drId){
+        List<FieldError> errors = new ArrayList<FieldError>();
+        if(drId <= 0){
+             errors.add(new FieldError("drId", "is invalid"));
+        }
+        return errors;
+    }
+    
+    public List<FieldError> userGetDrLableBy (int drId){
+        List<FieldError> errors = new ArrayList<FieldError>();
+        if(drId <= 0){
+            errors.add(new FieldError("drId", "is invalid"));
+        }
+        return errors;
+    }
+    
+    public List<FieldError> userAddDrLable(DrLbl drLbl){
+        List<FieldError> errors = new ArrayList<FieldError>();
+        if(drLbl == null){
+            errors.add(new FieldError("Lable objects", "is invalid"));
+            return errors;
+        }
+        if( isNullOrEmpty(drLbl.getLbl1())){
+            errors.add(new FieldError("Lable 1", "is invalid"));
+        }
+          if( isNullOrEmpty(drLbl.getLbl2())){
+            errors.add(new FieldError("Lable 2", "is invalid"));
+        }
+        return errors;
+    }
+    
+    public List<FieldError> userUpdateDrLable (DrLbl drLbl){        
+        List<FieldError> errors = new ArrayList<FieldError>();
+        if(drLbl == null){
+            errors.add(new FieldError("Lable objects", "is invalid"));
+            return errors;
+        }
+        if( isNullOrEmpty(drLbl.getLbl1())){
+            errors.add(new FieldError("Lable 1", "is invalid"));
+        }
+          if( isNullOrEmpty(drLbl.getLbl2())){
+            errors.add(new FieldError("Lable 2", "is invalid"));
+        } 
+        return errors;
+    }
+    
+    public List<FieldError> userDeleteDrLableBy (int drId){
+        List<FieldError> errors = new ArrayList<FieldError>();
+        if(drId <= 0){
+            errors.add(new FieldError("drId", "is invalid"));
+        }
+        return errors;
+    }
+    
     public List<FieldError> prescriptionAdd(Rx rx) {
         List<FieldError> errors = new ArrayList<FieldError>();
         if (rx == null) {
